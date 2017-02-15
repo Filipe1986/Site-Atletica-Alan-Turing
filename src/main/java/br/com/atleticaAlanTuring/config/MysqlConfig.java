@@ -30,7 +30,7 @@ public class MysqlConfig {
 	}
 
 	@Bean
-	public LocalContainerEntityManagerFactoryBean entityManagerFactory() throws Exception {
+	public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
 		LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
 		entityManagerFactoryBean.setDataSource(dataSource());
 		entityManagerFactoryBean.setPackagesToScan("br.com.atleticaAlanTuring.model");
@@ -46,7 +46,7 @@ public class MysqlConfig {
 	}
 
 	@Bean
-	public JpaTransactionManager transactionManager() throws Exception {
+	public JpaTransactionManager transactionManager() {
 		JpaTransactionManager transactionManager = new JpaTransactionManager();
 		transactionManager.setEntityManagerFactory(entityManagerFactory().getObject());
 		return transactionManager;
