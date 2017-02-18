@@ -6,13 +6,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Produto {
+public class Socio {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idProduto;
+	private Long idSocio;
 
-	private String nomeProduto;
-
-	private String pathFotoProduto;
+	private String nomeSocio;
 }

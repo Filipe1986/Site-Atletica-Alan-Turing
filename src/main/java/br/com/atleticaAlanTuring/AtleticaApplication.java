@@ -8,5 +8,6 @@ public class AtleticaApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(AtleticaApplication.class, args);
+
 	}
 }

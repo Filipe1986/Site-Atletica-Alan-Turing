@@ -19,7 +19,8 @@ public class UsuarioController {
 	public String inicio(Model model) {
 		System.out.println("entrando no index");
 		model.addAttribute("usuario", new Usuario());
-		return "index";
+
+		return "home";
 	}
 
 	@PostMapping("/")

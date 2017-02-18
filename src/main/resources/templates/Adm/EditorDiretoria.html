@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<link
+	href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"
+	rel="stylesheet" />
+<title>Insert title here</title>
+</head>
+<body>
+
+<div>>	<form class="form col-sm-4 col-sm-offset-4"
+		th:action="@{/}" th:object="${usuario}" method="post">
+		<fieldset>
+			<h2>Nome</h2>
+			<div class="form-group">
+				<input class="form-control" type="text" placeholder="Nome Aluno"
+					th:field="*{nome}" />
+			</div>
+			<div class="pull-right">
+				<button type="submit" class="btn btn-success">
+					<span class="glyphicon glyphicon-ok"></span> Salvar
+				</button>
+			</div>
+		</fieldset>
+	</form>
+</div>
+
+</body>
+</html>
