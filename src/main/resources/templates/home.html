@@ -14,69 +14,28 @@
 
 </head>
 <body>
-	<header>
 
-		<nav class="navbar navbar-inverse">
+	<header th:replace=" header:: header" ></header>
 
-			<div class="container-fluid">
-				<div class="navbar-header">
 
-					<button type="button" class="navbar-toggle" data-toggle="collapse"
-						data-target="#myNavbar">
-						<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-							class="icon-bar"></span>
+	<div>
+		<form class="form col-sm-4 col-sm-offset-4" th:action="@{/}"
+			th:object="${usuario}" method="post">
+			<fieldset>
+				<h2>Nome</h2>
+				<div class="form-group">
+					<input class="form-control" type="text" placeholder="Nome Aluno"
+						th:field="*{nome}" />
+				</div>
+				<div class="pull-right">
+					<button type="submit" class="btn btn-success">
+						<span class="glyphicon glyphicon-ok"></span> Salvar
 					</button>
-
-					<a class="navbar-brand" href=""> <img src="pika2.png"
-						width="50" height="50" /> Atlética Alan Turing
-					</a>
 				</div>
-				<div class="collapse navbar-collapse" id="myNavbar">
+			</fieldset>
+		</form>
+	</div>
 
-					<ul class="nav navbar-nav navbar-right">
-
-						<li><a href="#"> Institucional</a></li>
-						<li><a href="#"> Equipe</a></li>
-						<li><a href="#"> Produtos</a></li>
-						<li><a href="#"> Agenda</a></li>
-						<li><a href="#"> Contato</a></li>
-						<li class="dropdown"><a class="dropdown-toggle"
-							data-toggle="dropdown" href="#"> <span
-								class="glyphicon glyphicon-user"></span> Cadastre-se <span
-								class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li><a href="">Criar conta de aluno</a></li>
-								<li><a href="">Criar conta de instrutor</a></li>
-							</ul></li>
-						<li class="dropdown"><a class="dropdown-toggle"
-							data-toggle="dropdown" href="#"> <span
-								class="glyphicon glyphicon-log-in"></span> Login<span
-								class="caret"></span>
-						</a>
-							<ul class="dropdown-menu">
-							</ul></li>
-					</ul>
-				</div>
-			</div>
-		</nav>
-	</header>
-
-<div>	<form class="form col-sm-4 col-sm-offset-4"
-		th:action="@{/}" th:object="${usuario}" method="post">
-		<fieldset>
-			<h2>Nome</h2>
-			<div class="form-group">
-				<input class="form-control" type="text" placeholder="Nome Aluno"
-					th:field="*{nome}" />
-			</div>
-			<div class="pull-right">
-				<button type="submit" class="btn btn-success">
-					<span class="glyphicon glyphicon-ok"></span> Salvar
-				</button>
-			</div>
-		</fieldset>
-	</form>
-</div>
-
+	<footer th:replace="footer::footer"> </footer>	
 </body>
 </html>

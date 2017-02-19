@@ -10,16 +10,14 @@ import br.com.atleticaAlanTuring.model.Usuario;
 import br.com.atleticaAlanTuring.repository.UsuarioRepository;
 
 @Controller
-public class UsuarioController {
+public class VisitanteController {
 
 	@Autowired
 	UsuarioRepository usuarioRepository;
 
 	@GetMapping("/")
 	public String inicio(Model model) {
-		System.out.println("entrando no index");
 		model.addAttribute("usuario", new Usuario());
-
 		return "home";
 	}
 
@@ -32,4 +30,40 @@ public class UsuarioController {
 
 	}
 
+	@GetMapping("/contato")
+	public String contato() {
+		return "contato";
+	}
+
+	@GetMapping("/diretoria")
+	public String diretoria() {
+		return "/diretoria";
+	}
+
+	@GetMapping("/equipes")
+	public String equipe() {
+		return "equipes";
+
+	}
+
+	@GetMapping("/institucional")
+	public String institucionalVisitante() {
+
+		return "institucional";
+	}
+
+	@GetMapping("/sejaSocio")
+	public String sejaSocio() {
+		return "sejaSocio";
+	}
+
+	@GetMapping("/produtos")
+	public String produtos() {
+		return "produtos";
+	}
+
+	@GetMapping("/agenda")
+	public String agenda() {
+		return "agenda";
+	}
 }

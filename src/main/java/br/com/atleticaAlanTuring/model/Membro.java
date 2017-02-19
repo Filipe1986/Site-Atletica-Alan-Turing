@@ -33,6 +33,70 @@ public class Membro {
 
 	private String cargo;
 
-	private String LinkFacebook;
+	private String linkFacebook;
+
+	public Long getIdMembro() {
+		return idMembro;
+	}
+
+	public void setIdMembro(Long idMembro) {
+		this.idMembro = idMembro;
+	}
+
+	public String getPathFotoMembro() {
+		return pathFotoMembro;
+	}
+
+	public void setPathFotoMembro(String pathFotoMembro) {
+		this.pathFotoMembro = pathFotoMembro;
+	}
+
+	public String getNomeMembro() {
+		return nomeMembro;
+	}
+
+	public void setNomeMembro(String nomeMembro) {
+		this.nomeMembro = nomeMembro;
+	}
+
+	public List<Equipe> getEquipes() {
+		return equipes;
+	}
+
+	public void setEquipes(List<Equipe> equipes) {
+		this.equipes = equipes;
+	}
+
+	public Boolean getDiretoria() {
+		return diretoria;
+	}
+
+	public void setDiretoria(Boolean diretoria) {
+		this.diretoria = diretoria;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getCargo() {
+		return cargo;
+	}
+
+	public void setCargo(String cargo) {
+		this.cargo = cargo;
+	}
+
+	public String getLinkFacebook() {
+		return linkFacebook;
+	}
+
+	public void setLinkFacebook(String linkFacebook) {
+		this.linkFacebook = linkFacebook;
+	}
 
 }
