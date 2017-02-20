@@ -18,41 +18,43 @@ public class VisitanteController {
 	@GetMapping("/")
 	public String inicio(Model model) {
 		model.addAttribute("usuario", new Usuario());
-		return "home";
+		return "index";
 	}
 
-	@PostMapping("/")
+	/*
+	
+	 @PostMapping("/")
 	public String gravarUsuario(Usuario usuario) {
 		System.out.println(usuario);
 		usuarioRepository.saveAndFlush(usuario);
 		System.out.println("Usuario " + usuario.getNome() + " salvo!");
 		return "redirect:/";
 
-	}
+	} */
 
-	@GetMapping("/contato")
+	@GetMapping("/falacomigo")
 	public String contato() {
 		return "contato";
 	}
 
 	@GetMapping("/diretoria")
 	public String diretoria() {
-		return "/diretoria";
+		return "diretoria";
 	}
 
-	@GetMapping("/equipes")
+	@GetMapping("/meustimes")
 	public String equipe() {
 		return "equipes";
 
 	}
 
-	@GetMapping("/institucional")
+	@GetMapping("/quemsoueu")
 	public String institucionalVisitante() {
 
 		return "institucional";
 	}
 
-	@GetMapping("/sejaSocio")
+	@GetMapping("/sejasocio")
 	public String sejaSocio() {
 		return "sejaSocio";
 	}

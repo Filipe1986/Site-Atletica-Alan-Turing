@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
+
+/* Geral */
+
+body {	
+	height: 100%;
+	font-family: 'Roboto', sans-serif;
+}
+
+/* Logo */
+
+.logo {	
+	margin-left: 50%;
+	width: 100px;
+	height: 100px;
+}
+
+
+.logounirio {
+	width: 60px;
+	height: 60px;
+}
+
+/* Menu */
+.navbar-default {
+	background-color: white;
+	height: 5%;
+	margin-bottom: 1px;
+
+}
+
+.navbar-right li {
+	margin-top: 30px;
+		
+}
+
+/* Carousel */
+
+
+.carousel .item {
+    width: 100%;
+    max-height: 600px;
+}
+.carousel .item img {
+	margin: 0 auto;
+    width: 100%;
+}
+
+@media (max-width: 767px) {
+	/*Container*/
+    .block {
+        margin-left: -20px;
+        margin-right: -20px;
+    }
+}
+/* Rodapé */
+
+.footer {
+
+background-color: white;
+border-top: 1px solid lightgrey;
+padding: 2%;
+bottom: 0;
+margin: 0 auto !important;
+text-align: center !important;
+width: 100% !important;
+height: 80px;
+position: relative; }
+
+.footer > a {
+text-decoration: none;
+color: black; }
+
+.footer > a:hover {
+color: grey; }
+

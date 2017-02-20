@@ -1,16 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+<title>Atlética Alan Turing - Meus Times</title>
+<link rel="shortcut icon" href="favicon.ico"/>
 <meta charset="UTF-8" />
-<link
-	href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"
-	rel="stylesheet" />
-<title>Atlética Alan Turing - Equipes</title>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" />
+<link href="stylesheet.css"	rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />
+
 </head>
 <body>
-	<header th:replace=" header:: header"></header>
-	<h1>Equipes</h1>
-	
-		<footer th:replace="footer::footer"> </footer>	
+
+	<header th:replace="layout :: menu">Menu</header>
+
+	<main>
+		<h1>Meus Times</h1>
+	</main>
+
+	<footer th:replace="layout :: rodape">Rodapé</footer>
+
 </body>
 </html>
+

@@ -1,0 +1,96 @@
+<!--Menu-->
+
+<nav th:fragment="menu" class="navbar navbar-default">
+
+  <div class="container-fluid">
+
+    <div class="navbar-header">
+
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> 
+      </button>
+
+      <a href="#" class="navbar-left"><img class="logo" src="pika2.png"/></a>
+
+    </div>
+
+    <div class="collapse navbar-collapse" id="myNavbar">
+
+					<ul class="nav navbar-nav navbar-right">
+
+						<li><a th:href="@{/quemsoueu}">Quem sou eu?</a></li>
+						<li><a th:href="@{/meustimes}">Meus Times</a></li>
+						<li><a th:href="@{/diretoria}">Diretoria</a></li>
+						<li><a th:href="@{/produtos}">Produtos</a></li>
+						<li><a th:href="@{/agenda}">Agenda de Atividades</a></li>
+						<li><a th:href="@{/sejasocio}">Seja Sócio</a></li>
+						<li><a th:href="@{/falacomigo}">Fala comigo!</a></li>
+						<!--Temporário-->
+						<li><a th:href="@{/admHome}">Editor Temporario</a></li>
+
+					</ul>
+
+		</div>
+
+  </div>
+
+</nav>
+
+<!--Rodapé-->
+
+<div th:fragment="rodape" class="footer">
+
+      	<div class="row">
+
+      		<div class="col-xs-4 col-sm-4 col-lg-4 pull-left">
+      		
+      			<p><a href="http://www.unirio.br" target="_blank"><img src="logounirio.png" alt="logo unirio" class="logounirio"/></a></p>
+      			
+      		</div>
+
+      		<div class="col-xs-3 col-sm-3 col-lg-3">
+				
+				
+				<p><button type="button" class="btn btn-default btn-lg">
+					<i class="fa fa-envelope" aria-hidden="true"></i>
+ 				</button>				
+				<button type="button" class="btn btn-default btn-lg">
+					<i class="fa fa-facebook" aria-hidden="true"></i>
+ 				</button>
+ 				<button type="button" class="btn btn-default btn-lg">
+					<i class="fa fa-whatsapp" aria-hidden="true"></i>
+ 				</button></p>
+ 				
+				
+				
+      	 	</div>
+
+      	      	 	
+      	 	<div class="col-xs-3 col-sm-3 col-lg-3">
+
+       			<p>&copy; 2017 Atlética Alan Turing</p>  
+       			<p>Todos os direitos reservados</p>       			
+       			<p><a href="#">Privacidade</a> &middot;
+       			<a href="#">Termos de uso</a></p>
+
+      	 	</div>
+      	 	
+      	 	<div class="col-xs-2 col-sm-2 col-lg-2">
+
+      	 		<p>Desenvolvido por Uniriotec</p>
+      	 		<p><a href="http://www.uniriotec.com.br" target="_blank">www.uniriotec.com.br</a></p>
+
+      	 	</div>
+
+      
+      </div>
+
+<!--Arquivos Externos-->
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="script.js"></script>
+<script src="https://use.fontawesome.com/80614b41ba.js"></script>
+
+</div>
