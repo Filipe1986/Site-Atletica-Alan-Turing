@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8" />
-<link
-	href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"
-	rel="stylesheet" />
+
 <title>Atlética Alan Turing</title>
+<link rel="shortcut icon" href="favicon.ico"/>
+<meta charset="UTF-8" />
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" />
+<link href="stylesheet.css"	rel="stylesheet" />
+
+
 </head>
 <body>
-<header th:replace=" header:: header" ></header>
+
+	<header th:replace="layout :: menu">Menu</header>
+
 
 <ul><h1>Editar Páginas</h1>
   <li  class="list-group-item" ><a th:href="@{/carroselAdm}">Editar Carrosel</a></li>
@@ -21,6 +26,6 @@
   <li class="list-group-item"><a th:href="@{/contatoAdm}">Editar Contato</a></li>
 </ul>  
 
-	<footer th:replace="footer::footer"> </footer>	
+
 </body>
 </html>

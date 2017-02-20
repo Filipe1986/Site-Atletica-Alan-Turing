@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+<title>Atlética Alan Turing - Diretoria</title>
+<link rel="shortcut icon" href="favicon.ico"/>
 <meta charset="UTF-8" />
-<link
-	href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"
-	rel="stylesheet" />
-<title>Atlética Alan Turing - Novos membros</title>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" />
+<link href="stylesheet.css"	rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />
+
 </head>
 <body>
-	<header th:replace=" header:: header"></header>
+
+	<header th:replace="layout :: menu">Menu</header>
+	
 	<h1 class="form col-sm-4 col-sm-offset-4">Novo membro</h1>
 
 	<div class="form-group">
@@ -20,10 +25,17 @@
 				<div class="form-group">
 					<input type="text" th:field="*{nomeMembro}" />
 				</div>
+				<h2>Qual seu sexo?</h2>
+				<div class="form-group">
+					<input type="radio" th:field="*{sexo}" value="Masculino" />Masculino
+					<input type="radio" th:field="*{sexo}" value="Feminino" />Feminino
+				</div>
 				<h2>É da diretoria?</h2>
 				<div class="form-group">
 					<input type="checkbox" th:field="*{diretoria}" />
 				</div>
+
+
 				<h2>Cargo</h2>
 				<div class="form-group">
 					<input type="text" th:field="*{cargo}" />
@@ -34,7 +46,7 @@
 				</div>
 				<h2>Facebook</h2>
 				<div class="form-group">
-					<input type="text" th:field="*{linkFacebook}"/>
+					<input type="text" th:field="*{linkFacebook}" />
 				</div>
 				<div class="form-group">
 					<button type="submit">Adicionar novo membro</button>
@@ -43,7 +55,5 @@
 		</form>
 	</div>
 
-
-	<footer th:replace="footer::footer"> </footer>
 </body>
 </html>

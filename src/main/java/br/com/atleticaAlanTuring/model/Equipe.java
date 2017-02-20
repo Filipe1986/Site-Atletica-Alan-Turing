@@ -3,6 +3,8 @@ package br.com.atleticaAlanTuring.model;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,7 +17,10 @@ public class Equipe {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idEquipe;
 
-	private String Modalidade;
+	@Enumerated(EnumType.STRING)
+	private SexoModalidade sexo;
+
+	private String modalidade;
 
 	@ManyToMany(mappedBy = "equipes")
 	private List<Membro> atletas;
@@ -31,11 +36,11 @@ public class Equipe {
 	}
 
 	public String getModalidade() {
-		return Modalidade;
+		return modalidade;
 	}
 
 	public void setModalidade(String modalidade) {
-		Modalidade = modalidade;
+		this.modalidade = modalidade;
 	}
 
 	public List<Membro> getAtletas() {
@@ -52,6 +57,14 @@ public class Equipe {
 
 	public void setPathFotosEquipe(String pathFotosEquipe) {
 		this.pathFotosEquipe = pathFotosEquipe;
+	}
+
+	public SexoModalidade getSexo() {
+		return sexo;
+	}
+
+	public void setSexo(SexoModalidade sexo) {
+		this.sexo = sexo;
 	}
 
 }

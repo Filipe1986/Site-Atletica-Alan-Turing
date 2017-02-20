@@ -1,16 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+<title>Atlética Alan Turing</title>
+<link rel="shortcut icon" href="favicon.ico" />
 <meta charset="UTF-8" />
 <link
 	href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"
 	rel="stylesheet" />
-<title>Atlética Alan Turing - Equipes</title>
+<link href="stylesheet.css" rel="stylesheet" />
+
+
 </head>
 <body>
-	<header th:replace=" header:: header"></header>
-	<h1>Equipes</h1>
 
-	<footer th:replace="footer::footer"> </footer>
+	<header th:replace="layout :: menu">Menu</header>
+
+	<h1 class="form col-sm-4 col-sm-offset-4">Equipes</h1>
+	<div class="form-group">
+		<form class="form col-sm-4 col-sm-offset-4"
+			th:action="@{/adicionarNovaEquipe}" th:object="${equipe}"
+			method="POST">
+			<fieldset>
+				<h2>Modalidade</h2>
+				<div class="form-group">
+					<input type="text" th:field="*{modalidade}" />
+				</div>
+				<h2>Feminino, Masculino ou misto</h2>
+				<div class="form-group">
+					<select th:field="*{sexo}">
+						<option th:each="type : ${sexo}" th:value="${type}"
+							th:text="${type}">Wireframe</option>
+					</select>
+				</div>
+				<button type="submit">Adicionar nova equipe</button>
+			</fieldset>
+		</form>
+	</div>
 </body>
 </html>

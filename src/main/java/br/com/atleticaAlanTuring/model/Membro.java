@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -32,6 +34,9 @@ public class Membro {
 	private String email;
 
 	private String cargo;
+
+	@Enumerated(EnumType.STRING)
+	private Sexo sexo;
 
 	private String linkFacebook;
 
@@ -97,6 +102,14 @@ public class Membro {
 
 	public void setLinkFacebook(String linkFacebook) {
 		this.linkFacebook = linkFacebook;
+	}
+
+	public Sexo getSexo() {
+		return sexo;
+	}
+
+	public void setSexo(Sexo sexo) {
+		this.sexo = sexo;
 	}
 
 }
