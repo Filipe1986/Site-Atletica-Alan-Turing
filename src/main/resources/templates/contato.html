@@ -15,7 +15,55 @@
 	<header th:replace="layout :: menu">Menu</header>
 
 	<main>
-		<h1>Fala comigo!</h1>
+
+		<div class="container">		 	
+
+			<div class="row">
+
+				<div class="col-xs-6 col-md-6 col-lg-6 pull-left">
+
+					<h1 class="tituloContato">Fala comigo!</h1>
+
+					<form>
+
+						<div class="form-group">
+						    <label for="nome">Nome:</label>
+						    <input type="text" class="form-control" id="nome"/>
+						</div>
+
+						<div class="form-group">						
+						    <label for="email">Email:</label>
+						    <input type="email" class="form-control" id="email"/>
+						</div>
+						
+						<div class="form-group">
+						    <label for="assunto">Assunto:</label>
+						    <input type="text" class="form-control" id="assunto"/>
+						</div>
+
+						<div class="form-group">
+						  	<label for="mensagem">Mensagem:</label>
+						  	<textarea class="form-control" rows="10" id="mensagem"></textarea>
+						</div>
+
+						 <button type="submit" class="btn btn-default">Enviar</button>
+
+					</form>
+
+				</div>
+
+				<div class="col-xs-6 col-md-6 col-lg-6 pull-right">				
+
+					<img class="unirioccet" src="unirioccet.jpg" alt="Unirio CCET"/>							
+
+		 			<a href="https://www.google.com/maps/dir//unirio+ccet/"><img class="mapaccet" src="mapaccet.png" alt="Mapa CCET"/></a>
+
+		 		</div>
+
+		 	</div>
+
+		 </div>
+
 	</main>
 
 	<footer th:replace="layout :: rodape">Rodapé</footer>
