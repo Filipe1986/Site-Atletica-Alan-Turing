@@ -15,7 +15,74 @@
 	<header th:replace="layout :: menu">Menu</header>
 
 	<main>
-		<h1>Meus Times</h1>
+	
+		<div class="container">
+		
+			<h1 class="text-center">Meus Times</h1>
+	
+			<div class="panel-group" id="accordion">
+	
+				<div class="panel panel-default">
+	
+				    <div class="panel-heading">
+	
+				      <h4 class="panel-title">
+				        <p>Futsal<a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+				        <i class="fa fa-plus pull-right"></i></a></p>
+				      </h4>
+	
+				    </div>
+	
+				    <div id="collapse1" class="panel-collapse collapse">
+	
+				      <div class="panel-body"><img src="timefutsal.jpg" alt="Time Futsal"/></div>
+	
+				    </div>
+	
+				</div>
+	
+				 <div class="panel panel-default">
+	
+				    <div class="panel-heading">
+	
+				      <h4 class="panel-title">
+				        <p>Voleibol<a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+				        <i class="fa fa-plus pull-right"></i></a></p>
+				      </h4>
+	
+				    </div>
+	
+				    <div id="collapse2" class="panel-collapse collapse">
+	
+				      <div class="panel-body"><img src="timefutsal.jpg" alt="Time Futsal"/></div>
+	
+				    </div>
+	
+				</div>
+	
+				<div class="panel panel-default">
+	
+				    <div class="panel-heading">
+	
+				      <h4 class="panel-title">
+				        <p>Handebol<a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+				        <i class="fa fa-plus pull-right"></i></a></p>
+				      </h4>
+	
+				    </div>
+	
+				    <div id="collapse3" class="panel-collapse collapse">
+	
+				      <div class="panel-body"><img src="timefutsal.jpg" alt="Time Futsal"/></div>
+	
+				    </div>
+	
+				</div>
+				
+			</div>
+		
+		</div>
+
 	</main>
 
 	<footer th:replace="layout :: rodape">Rodapé</footer>

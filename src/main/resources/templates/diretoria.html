@@ -14,9 +14,29 @@
 
 	<header th:replace="layout :: menu">Menu</header>
 
-	<main>
-		<h1>Diretoria</h1>
-		<div class="d-flex align-content-stretch flex-wrap">...</div>
+	<main>	
+			<div class="flexbox">
+
+				<figure class="text-center">
+				
+					<img src="http://lorempixel.com/250/500" alt="Membro 1"/>
+					
+						<p>Nome Sobrenome - Cargo</p>
+						
+						<a href="facebook">
+							<button type="button" class="btn btn-default btn-sm">
+								<i class="fa fa-facebook" aria-hidden="true"></i>
+		 					</button>
+		 				</a> 
+
+				</figure>	
+				
+					<img src="http://lorempixel.com/250/500" alt="Membro 2" />
+					<img src="http://lorempixel.com/250/500" alt="Membro 3" />
+					<img src="http://lorempixel.com/250/500" alt="Membro 4" />	
+					<img src="http://lorempixel.com/250/500" alt="Membro 5" />						
+				</div>
+			
 	</main>
 
 	<footer th:replace="layout :: rodape">Rodapé</footer>
