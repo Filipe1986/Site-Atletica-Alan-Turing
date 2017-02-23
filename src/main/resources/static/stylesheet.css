@@ -3,7 +3,7 @@
 /* Geral */
 
 body {	
-	height: 100%;
+	min-height: 100%;
 	font-family: 'Roboto', sans-serif;
 }
 
@@ -12,18 +12,49 @@ main {
 	margin: 0 auto;
 }
 
+.indent {
+	text-indent: 10px;
+}
+
 /* Logo */
 
 .logo {	
-	margin-left: 50%;
+	margin-left: 50%;		
 	width: 100px;
 	height: 100px;
 }
 
+@media (max-width: 767px) {	
+    .logo {
+        margin-left: 25%;
+    }
+}
 
 .logounirio {
-	width: 60px;
-	height: 60px;
+	width: 80px;
+	height: 80px;
+}
+
+/* Título */
+
+.title {
+	float: right;
+	text-decoration: none;
+	color: darkgrey;
+	margin-top: 30px;
+	margin-left: 50%;
+}
+
+.title:hover {
+	text-decoration: none;
+}
+
+@media (max-width: 767px) {	
+    .title {    
+    	position: absolute;	
+        top: 20px;
+        margin-left: 50%;
+    }
 }
 
 /* Menu */
@@ -31,6 +62,7 @@ main {
 	background-color: white;
 	height: 5%;
 	margin-bottom: 1px;
+	width: 100%;
 
 }
 
@@ -80,6 +112,60 @@ color: grey; }
     }
 }
 
+/*[SOBRE] Diagramação */
+
+.rowSobre {
+	margin-top: 100px;
+}
+
+.listaSobre {	
+	text-align: left;
+}
+
+.imagemSobre {
+	max-height: 100%;
+	max-width: 100%
+}
+
+/*[SOBRE] Estilização */
+
+.paginaSobre < p {
+	font-size: 180%;
+	text-align: justify;	
+}
+
+.tituloSobre {
+	color: darkred;
+	font-size: 400%;
+
+}
+
+.subtituloSobre {
+	margin-bottom: 5%;
+	color: darkred;
+	font-size: 300%;
+
+}
+
+.destaqueSobre {
+	color: darkred;
+	text-decoration: underline;
+	font-size: 280%;
+	margin: 0 auto;
+	padding-top: 0;
+}
+
+.modalidadesSobre {
+	font-size: 300%;
+	list-style-type: none;
+	font-weight: lighter;
+
+}
+
+.textoSobre{
+	font-size: 185%;
+}
+
 /* [CONTATO] Título */
 
 .tituloContato {
@@ -115,28 +201,56 @@ color: grey; }
 /*[DIRETORIA]*/
 
 .flexbox {
-	margin: 2% 0%;
+	margin-top: 2%;
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
 	justify-content: center;	
 }
 
-.flexbox img {
-	opacity: 0.7;
+.fotoDiretoria{
+	filter: grayscale(100%);
+	opacity: 0.8;
+	width: 250px;
+	height: 500px;
+	background-image: url("http://lorempixel.com/250/500");
 }
 
-.flexbox img:hover{
+.fotoDiretoria:hover{
+	filter: none;
 	opacity: 1.0;
 }
 
 
-.fotoDiretoria{
-    width: 100%;
-    padding: 0px;
+.legendaDiretoria{
+	height: 50px;
+    display:none;
+    position: inherit;
+    background: darkred;
+    bottom: 0px;
+    top: 500px;
+    width:100%;
+    color: #fff;
 }
 
+/*[MEUS TIMES] Esportes */
 
+#meustimes < .panel-default {
+	width: 100%;
+	height: 250px;
+}
 
+.esportes {
+	margin: 0 auto;
+	max-height: 100%;
+	max-width: 100%;	
+}
+
+/*[PRODUTOS] Mostrar Produtos */
+
+.mostrarProduto {
+	width: 300px;
+	height: 300px;
+}
 
 

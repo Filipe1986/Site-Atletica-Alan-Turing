@@ -7,7 +7,7 @@
 <meta charset="UTF-8" />
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" />
 <link href="stylesheet.css"	rel="stylesheet" />
-<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />
+<link href="bootstrap-year-calendar.css" rel="stylesheet" />
 
 </head>
 <body>
@@ -15,10 +15,15 @@
 	<header th:replace="layout :: menu">Menu</header>
 
 	<main>
-		<h1>Agenda de Atividades</h1>
+
+		<div data-provide="calendar"></div>
+		
 	</main>
 
 	<footer th:replace="layout :: rodape">Rodapé</footer>
+
+	<!--Calendário-->
+	<script src="bootstrap-year-calendar.js"></script>
 
 </body>
 </html>
