@@ -5,16 +5,101 @@
 <title>Atlética Alan Turing</title>
 <link rel="shortcut icon" href="favicon.ico"/>
 <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width"/>
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" />
-<link href="stylesheet.css"	rel="stylesheet" />
+<link href="adminstylesheet.css"	rel="stylesheet" />
 
 
 </head>
 <body>
 
-	<header th:replace="layout :: menu">Menu</header>
+	<header th:replace="adminlayout :: menu">Menu</header>
 
-<h1>Diretoria</h1>
+	<div class="container">
 
-	</body>
+		<div class="row">
+
+			<h1 class="text-center tituloPagina">Editar Diretoria</h1>
+
+			<div class="col-xs-12 col-sm-6 col-lg-6">
+				
+				<form class="form" th:action="@{/cadastrardiretor}"
+						th:object="${diretor}" method="post">
+
+						<fieldset>
+
+							<h2>Novo Diretor</h2>
+							<div class="form-group" style="display: none;">
+								<label class="control-label">ID: </label> <input
+									class="form-control" type="text" 
+									th:field="*{id}" />
+							</div>
+
+							<div class="form-group">
+								<label class="control-label">Nome: </label> <input
+									class="form-control" type="text" placeholder="Insira o Nome"
+									th:field="*{nome}" />
+							</div>
+							
+							<div class="form-group">
+								<label class="control-label">Cargo: </label>
+								<input
+									class="form-control" type="text" placeholder="Insira o Cargo"
+									th:field="*{cargo}" />
+							</div>
+
+							<div class="form-group">
+								<label class="control-label">Facebook: </label> <input
+									class="form-control" type="text" placeholder="Insira o link para o perfil"
+									th:field="*{facebook}" />
+							</div>
+
+							<div class="pull-right">
+								<button type="submit" class="btn btn-success">
+									<i class="fa fa-check" aria-hidden="true"></i> Salvar
+								</button>
+								<button type="reset" class="btn btn-defaul">
+									<i class="fa fa-eraser" aria-hidden="true"></i> Limpar
+								</button>
+							</div>
+
+						</fieldset>
+
+				</form>
+
+			</div>
+
+			<div class="col-xs-12 col-sm-6 col-lg-6">
+			
+				<h2>Diretores Cadastrados</h2>
+				
+				<h4 th:if="${diretores.size()} == 0">Você ainda não cadastrou nenhum diretor!</h4>
+		
+				<div th:each="diretor : ${diretores}" class="panel panel-default">
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-xs-10">
+								<h4 th:lgtext="${diretor.nome}">Nome</h4>
+								<span class="badge" th:text="${diretor.cargo}">Cargo</span> 
+								<span class="badge" th:text="${diretor.facebook}">Facebook</span> 							
+							</div>
+							<div class="col-xs-2">								
+								<div class="row">
+									<a class="btn btn-danger pull-right botaoRemover" th:href="@{/removerdiretor/__${diretor.id}__}"><span class="glyphicon glyphicon-remove"></span></a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+		</div>	
+
+	</div>
+	
+	<footer th:replace="adminlayout :: rodape">Rodapé</footer>
+
+</body>
+
 </html>

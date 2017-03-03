@@ -1,10 +1,20 @@
 package br.com.atleticaAlanTuring.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import br.com.atleticaAlanTuring.model.Diretor;
+import br.com.atleticaAlanTuring.repository.DiretorRepository;
 
 @Controller
 public class VisitanteController {
+
+	@Autowired
+	private DiretorRepository diretorRepository;
 
 	@GetMapping("/")
 	public String index(){
@@ -17,7 +27,9 @@ public class VisitanteController {
 	}
 
 	@GetMapping("/diretoria")
-	public String diretoria() {
+	public String diretoria(Model model) {		
+		List<Diretor> diretores = diretorRepository.findAll();		
+		model.addAttribute("diretores", diretores);
 		return "diretoria";
 	}
 
@@ -46,5 +58,6 @@ public class VisitanteController {
 	@GetMapping("/agenda")
 	public String agenda() {
 		return "agenda";
-	}
+	}	
+	
 }

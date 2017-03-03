@@ -26,35 +26,13 @@ main {
 
 @media (max-width: 767px) {	
     .logo {
-        margin-left: 25%;
+        margin: 0 auto !important;
     }
 }
 
 .logounirio {
 	width: 80px;
 	height: 80px;
-}
-
-/* Título */
-
-.title {
-	float: right;
-	text-decoration: none;
-	color: darkgrey;
-	margin-top: 30px;
-	margin-left: 50%;
-}
-
-.title:hover {
-	text-decoration: none;
-}
-
-@media (max-width: 767px) {	
-    .title {    
-    	position: absolute;	
-        top: 20px;
-        margin-left: 50%;
-    }
 }
 
 /* Menu */
@@ -69,6 +47,12 @@ main {
 .navbar-right li {
 	margin-top: 30px;
 		
+}
+
+@media (max-width: 767px) {	
+    .navbar-header {
+        width: 100%;
+    }
 }
 
 /* Rodapé */
@@ -169,7 +153,17 @@ color: grey; }
 /* [CONTATO] Título */
 
 .tituloContato {
-	margin-bottom: 10%;	
+	margin-bottom: 5%;	
+	font-size: 400%;
+}
+
+/* [CONTATO] Texto */
+
+.textoContato {
+	font-size: 200%;
+    display: inline-block;
+    vertical-align: middle;    
+}
 }
 
 /* [CONTATO] Campo de Mensagem*/
@@ -180,6 +174,8 @@ color: grey; }
 
 /* [CONTATO] Foto CCET*/
 .unirioccet {
+	vertical-align: middle;
+	display: inline-block;
 	max-width: 100%;
 	max-height: 100%;
 	width: 400px; 
@@ -189,6 +185,8 @@ color: grey; }
 }
 
 .mapaccet {
+	vertical-align: middle;
+	display: inline-block;
 	max-width: 100%;
 	max-height: 100%;
 	width: 400px; 
@@ -208,15 +206,14 @@ color: grey; }
 	justify-content: center;	
 }
 
-.fotoDiretoria{
+.fotoDiretoria img{
 	filter: grayscale(100%);
 	opacity: 0.8;
 	width: 250px;
-	height: 500px;
-	background-image: url("http://lorempixel.com/250/500");
+	height: 500px;	
 }
 
-.fotoDiretoria:hover{
+.fotoDiretoria img:hover{
 	filter: none;
 	opacity: 1.0;
 }
@@ -227,23 +224,27 @@ color: grey; }
     display:none;
     position: inherit;
     background: darkred;
-    bottom: 0px;
-    top: 500px;
+    bottom: 0px;   
     width:100%;
     color: #fff;
 }
 
 /*[MEUS TIMES] Esportes */
 
-#meustimes < .panel-default {
-	width: 100%;
-	height: 250px;
-}
-
-.esportes {
-	margin: 0 auto;
+.panel-body {
+	margin: 0 auto !important;	
+	height: 200px;
 	max-height: 100%;
 	max-width: 100%;	
+}
+
+.panel-body img{
+	min-width: 100%;
+	min-height: 100%;
+}
+
+.panel-body:last-child {
+	margin-bottom: 5px;
 }
 
 /*[PRODUTOS] Mostrar Produtos */

@@ -5,14 +5,14 @@
 <title>Atlética Alan Turing - Diretoria</title>
 <link rel="shortcut icon" href="favicon.ico"/>
 <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width"/>
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" />
-<link href="stylesheet.css"	rel="stylesheet" />
-<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />
+<link href="adminstylesheet.css"	rel="stylesheet" />
 
 </head>
 <body>
 
-	<header th:replace="layout :: menu">Menu</header>
+	<header th:replace="adminlayout :: menu">Menu</header>
 	
 	<h1 class="form col-sm-4 col-sm-offset-4">Novo membro</h1>
 
@@ -54,7 +54,8 @@
 			</fieldset>
 		</form>
 	</div>
-	
 
+	<footer th:replace="adminlayout :: rodape">Rodapé</footer>
+	
 </body>
 </html>

@@ -5,27 +5,28 @@
 <title>Atlética Alan Turing</title>
 <link rel="shortcut icon" href="favicon.ico"/>
 <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width"/>
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" />
-<link href="stylesheet.css"	rel="stylesheet" />
-
+<link href="adminstylesheet.css"	rel="stylesheet" />
 
 </head>
 <body>
 
-	<header th:replace="layout :: menu">Menu</header>
+  <header th:replace="adminlayout :: menu">Menu</header>
 
+  <ul><h1>Editar Páginas</h1>
+    <li  class="list-group-item" ><a th:href="@{/carroselAdm}">Editar Carrosel</a></li>
+    <li class="list-group-item"><a th:href="@{/membrosAdm}">Editar Membros</a></li>
+    <li class="list-group-item"><a th:href="@{/equipesAdm}">Editar Equipes</a></li>
+    <li class="list-group-item"><a th:href="@{/editarDiretoria}">Editar Diretoria</a></li>
+    <li class="list-group-item"><a th:href="@{/institucionalAdm}">Editar Institucional</a></li>
+    <li class="list-group-item"><a th:href="@{/painelAdm}">Editar Painel</a></li>
+    <li class="list-group-item"><a th:href="@{/produtoAdm}">Editar Produtos</a></li>
+    <li class="list-group-item"><a th:href="@{/agendaAdm}">Editar Agenda</a></li>
+    <li class="list-group-item"><a th:href="@{/contatoAdm}">Editar Contato</a></li>
+  </ul>  
 
-<ul><h1>Editar Páginas</h1>
-  <li  class="list-group-item" ><a th:href="@{/carroselAdm}">Editar Carrosel</a></li>
-  <li class="list-group-item"><a th:href="@{/membrosAdm}">Editar Membros</a></li>
-  <li class="list-group-item"><a th:href="@{/equipesAdm}">Editar equipes</a></li>
-  <li class="list-group-item"><a th:href="@{/institucionalAdm}">Editar Institucional</a></li>
-  <li class="list-group-item"><a th:href="@{/painelAdm}">Editar Painel</a></li>
-  <li class="list-group-item"><a th:href="@{/produtoAdm}">Editar Produtos</a></li>
-  <li class="list-group-item"><a th:href="@{/agendaAdm}">Editar Agenda</a></li>
-  <li class="list-group-item"><a th:href="@{/contatoAdm}">Editar Contato</a></li>
-</ul>  
-
+  <footer th:replace="adminlayout :: rodape">Rodapé</footer>
 
 </body>
 </html>

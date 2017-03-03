@@ -5,6 +5,7 @@
 <title>Atlética Alan Turing - Diretoria</title>
 <link rel="shortcut icon" href="favicon.ico"/>
 <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width"/>
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" />
 <link href="stylesheet.css"	rel="stylesheet" />
 
@@ -19,94 +20,28 @@
 
 			<div class="flexbox text-center">
 
-				<div class="fotoDiretoria">
+				<p th:if="${diretores.size()} == 0">Não há diretores no momento</p>
+
+				<div th:each="diretor : ${diretores}" class="fotoDiretoria">
+
+					<img src="http://lorempixel.com/250/500" alt="Foto Membro"/>
 
 					<div class="legendaDiretoria">
 				          
-						<p>Nome Sobrenome - Cargo
+						<p th:text="${diretor.nome}">Nome</p>
+
+						<p th:text="${diretor.cargo}">Cargo
 							
-							<a href="facebook">
+							<a th:text="${diretor.facebook}">
 									<button type="button" class="btn btn-default btn-sm">
 										<i class="fa fa-facebook" aria-hidden="true"></i>
 				 					</button>
 				 			</a>
 
-				 		</p>	
+				 		</p>				 		
 
-		 			</div>
-
-		 		</div> 
-
-		 		<div class="fotoDiretoria">
-
-					<div class="legendaDiretoria">
-				          
-						<p>Nome Sobrenome - Cargo
-							
-							<a href="facebook">
-									<button type="button" class="btn btn-default btn-sm">
-										<i class="fa fa-facebook" aria-hidden="true"></i>
-				 					</button>
-				 			</a>
-
-				 		</p>	
-
-		 			</div>
-
-		 		</div> 
-
-		 		<div class="fotoDiretoria">
-
-					<div class="legendaDiretoria">
-				          
-					<p>Nome Sobrenome - Cargo
-						
-						<a href="facebook">
-								<button type="button" class="btn btn-default btn-sm">
-									<i class="fa fa-facebook" aria-hidden="true"></i>
-			 					</button>
-			 			</a>
-
-			 		</p>
-
-		 			</div>
-
-		 		</div> 
-
-		 		<div class="fotoDiretoria">
-
-					<div class="legendaDiretoria">
-				          
-					<p>Nome Sobrenome - Cargo
-						
-						<a href="facebook">
-								<button type="button" class="btn btn-default btn-sm">
-									<i class="fa fa-facebook" aria-hidden="true"></i>
-			 					</button>
-			 			</a>
-
-			 		</p>	
-
-		 			</div>
-
-		 		</div> 
-		 		
-		 		<div class="fotoDiretoria">
-
-					<div class="legendaDiretoria">
-				          
-					<p>Nome Sobrenome - Cargo
-						
-						<a href="facebook">
-								<button type="button" class="btn btn-default btn-sm">
-									<i class="fa fa-facebook" aria-hidden="true"></i>
-			 					</button>
-			 			</a>
-
-			 		</p>	
-
-		 			</div>
-
+				 	</div>
+				 	
 		 		</div>
 
 		 	</div>

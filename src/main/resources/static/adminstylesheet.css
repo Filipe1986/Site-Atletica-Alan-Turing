@@ -1,0 +1,38 @@
+/* Geral */
+
+body{
+	background-color: #F5F5F5;
+}
+
+.tituloPagina {
+	margin-bottom: 3%;
+}
+
+/* Menu */
+.navbar-default {
+	background-color: white;
+	height: 120px;
+	border-bottom: 1px solid lightgrey;
+	margin-bottom: 2px;
+	width: 100%;
+}
+
+.logo {
+	display: inline-block;
+	vertical-align: middle;
+	width: 100px;
+	height: 100px;
+	transform: translateX(-50%);
+  	left: 50%;
+  	top: 10px;
+  	position: absolute;
+ 	
+}
+
+
+/* [DIRETORIA] Bot? de Remo?o */
+
+.botarRemover {
+	margin-right: 15px;
+	margin-top: 50%;
+}
