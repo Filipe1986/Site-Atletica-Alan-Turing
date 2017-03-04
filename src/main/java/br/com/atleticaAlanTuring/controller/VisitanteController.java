@@ -20,6 +20,12 @@ public class VisitanteController {
 	public String index(){
 		return "index";
 	}
+	
+	
+	@GetMapping("/login")
+	public String login(){
+		return "login";
+	}
 
 	@GetMapping("/falacomigo")
 	public String contato() {

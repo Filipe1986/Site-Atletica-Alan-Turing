@@ -28,8 +28,8 @@
             <li th:classappend="${#httpServletRequest.getRequestURI() == '/sejasocio' ? 'active':''}"><a th:href="@{/sejasocio}">Seja Sócio</a></li>
             <li th:classappend="${#httpServletRequest.getRequestURI() == '/falacomigo' ? 'active':''}"><a th:href="@{/falacomigo}">Fala comigo!</a></li>
             <!--Temporário-->
+           	<li><a href="#" data-toggle="modal" data-target="#login-modal">Login</a></li>
             <li th:classappend="${#httpServletRequest.getRequestURI() == '/admHome' ? 'active':''}"><a th:href="@{/admHome}">Editor Temporario</a></li>
-
           </ul>
 
     </div>

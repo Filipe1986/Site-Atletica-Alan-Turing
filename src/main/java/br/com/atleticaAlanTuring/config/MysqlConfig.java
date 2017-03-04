@@ -15,7 +15,7 @@ import org.springframework.orm.jpa.vendor.HibernateJpaDialect;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-@EnableJpaRepositories(basePackages = "br.com.atleticaAlanTuring.repository")
+@EnableJpaRepositories(basePackages = "br.com.atleticaAlanTuring.repository" )
 @EnableTransactionManagement
 public class MysqlConfig {
 

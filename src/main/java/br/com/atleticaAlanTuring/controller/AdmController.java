@@ -42,10 +42,10 @@ public class AdmController {
 		return "Adm/admHome";
 	}
 
-	@GetMapping("/carroselAdm")
-	public String editarCarrosel() {
+	@GetMapping("/carrosselAdm")
+	public String editarCarrossel() {
 
-		return "Adm/editorCarrosel";
+		return "Adm/editorCarrossel";
 	}
 
 	@GetMapping("/produtoAdm")
