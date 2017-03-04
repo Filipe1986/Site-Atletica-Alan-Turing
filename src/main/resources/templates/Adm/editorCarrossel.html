@@ -13,8 +13,33 @@
 <body>
 
 	<header th:replace="adminlayout :: menu">Menu</header>
+	
+	<div class="container">
 
-	<h1>Carrossel</h1>
+		<div class="row">
+
+			<h1 class="text-center tituloPagina">Carrosel</h1>
+
+			<form method="post" action="doUpload" enctype="multipart/form-data">
+		            <table border="0">
+		                <tr>
+		                    <td>Pick file #1:</td>
+		                    <td><input type="file" name="fileUpload" size="50" /></td>
+		                </tr>
+		                <tr>
+		                    <td>Pick file #2:</td>
+		                    <td><input type="file" name="fileUpload" size="50" /></td>
+		                </tr>
+		                <tr>
+		                    <td colspan="2" align="center"><input type="submit" value="Upload" /></td>
+		                </tr>
+		            </table>
+		    </form>
+		    
+		</div>
+		
+    </div>
+
 
 	<footer th:replace="adminlayout :: rodape">Rodapé</footer>
 	

@@ -12,20 +12,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import br.com.atleticaAlanTuring.model.Categoria;
 import br.com.atleticaAlanTuring.model.Diretor;
 import br.com.atleticaAlanTuring.model.Equipe;
-import br.com.atleticaAlanTuring.model.Membro;
+
 import br.com.atleticaAlanTuring.model.Produto;
 import br.com.atleticaAlanTuring.repository.DiretorRepository;
 import br.com.atleticaAlanTuring.repository.EquipeRepository;
-import br.com.atleticaAlanTuring.repository.MembroRepository;
+
 import br.com.atleticaAlanTuring.repository.ProdutoRepository;
 
 @Controller
 public class AdmController {
 
-	@Autowired
-	private MembroRepository membroRepository;
 
 	@Autowired
 	private EquipeRepository equipeRepository;
@@ -35,32 +34,60 @@ public class AdmController {
 
 	@Autowired
 	private DiretorRepository diretorRepository;
-
+	
+	
 	@GetMapping("/admHome")
 	public String escolherEditor() {
 
 		return "Adm/admHome";
 	}
 
+	//Carrosel
+	
 	@GetMapping("/carrosselAdm")
-	public String editarCarrossel() {
-
+	public String editarCarrosel(Model model) {	
 		return "Adm/editorCarrossel";
-	}
+	}	
+    	
+	//Produto 
 
-	@GetMapping("/produtoAdm")
-	public String editarProdutos(Model model) {
-		model.addAttribute("produto", new Produto());
+	@GetMapping("/editarProdutos")
+	public String listarProdutos(Produto produto, Model model) {
+		List<Produto> produtos = produtoRepository.findAll();		
+		model.addAttribute("produtos", produtos);		
+		model.addAttribute("categorias", Categoria.values());
 		return "Adm/editorProduto";
-
 	}
+		
+	@PostMapping("/cadastrarprodutos")
+	public String cadastrarProduto(Produto produto, Model model){		
+		produtoRepository.save(produto);
+		return "redirect:/editarProdutos";
+	}	
+	
+
+	@GetMapping("/removerproduto/{id}")
+	public String removerProduto(@PathVariable(name="id") Long idProduto){
+		produtoRepository.delete(idProduto);
+		return "redirect:/editarProdutos";
+	}
+	
+	@GetMapping(value = "/api/produtos", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<Produto>> apiProdutos(){
+	
+		List<Produto> produtos = produtoRepository.findAll();
+		
+		return new ResponseEntity<List<Produto>>(produtos, HttpStatus.OK);
+	}
+
+	//Agenda
 
 	@GetMapping("/agendaAdm")
 	public String editarAgenda() {
 		return "Adm/editorAgenda";
 	}
 
-	//[COMEÇO] Diretoria
+	//Diretoria
 
 	@GetMapping("/editarDiretoria")
 	public String listarDiretoria(Diretor diretor, Model model) {
@@ -82,14 +109,14 @@ public class AdmController {
 	}
 	
 	@GetMapping(value = "/api/diretores", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<List<Diretor>> apiClientes(){
+	public ResponseEntity<List<Diretor>> apiDiretores(){
 	
 		List<Diretor> diretores = diretorRepository.findAll();
 		
 		return new ResponseEntity<List<Diretor>>(diretores, HttpStatus.OK);
 	}
 
-	//[FINAL] Diretoria
+	//Contato
 
 	@GetMapping("/contatoAdm")
 	public String editarContato() {
@@ -102,33 +129,13 @@ public class AdmController {
 		return "Adm/editorEquipes";
 	}
 
-	@GetMapping("/membrosAdm")
-	public String editarMembros(Model model) {
-		List<Membro> membros = membroRepository.findAll();
-		model.addAttribute("membros", membros);
-		model.addAttribute("membro", new Membro());
-
-		return "Adm/editorMembros";
-	}
-
+	
 	@GetMapping("/institucionalAdm")
 	public String editarInstitucional() {
 
 		return "Adm/editorInstitucional";
 	}
-
-	@GetMapping("/painelAdm")
-	public String editarPainel() {
-
-		return "Adm/editorPainel";
-	}
-
-	@PostMapping("/adicionarNovoMembro")
-	public String adicionarMembro(Membro membro) {
-		System.out.println("Nome membro : " + membro.getNomeMembro() + "Diretoria :" + membro.getDiretoria());
-		membroRepository.saveAndFlush(membro);
-		return "redirect:/membrosAdm";
-	}
+	
 
 	@PostMapping("/adicionarNovaEquipe")
 	public String adicionarEquipe(Equipe equipe) {
@@ -143,4 +150,20 @@ public class AdmController {
 		return "redirect:/produtoAdm";
 	}
 
+	/* Inutilizado
+	@GetMapping("/painelAdm")
+	public String editarPainel() {
+
+		return "Adm/editorPainel";
+	}
+
+	@PostMapping("/adicionarNovoMembro")
+	public String adicionarMembro(Membro membro) {
+		System.out.println("Nome membro : " + membro.getNomeMembro() + "Diretoria :" + membro.getDiretoria());
+		membroRepository.saveAndFlush(membro);
+		return "redirect:/membrosAdm";
+	}
+	*/
+
 }
+

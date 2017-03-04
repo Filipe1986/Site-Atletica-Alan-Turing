@@ -6,9 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import br.com.atleticaAlanTuring.model.Diretor;
+import br.com.atleticaAlanTuring.model.Produto;
 import br.com.atleticaAlanTuring.repository.DiretorRepository;
+import br.com.atleticaAlanTuring.repository.ProdutoRepository;
 
 @Controller
 public class VisitanteController {
@@ -16,21 +19,26 @@ public class VisitanteController {
 	@Autowired
 	private DiretorRepository diretorRepository;
 
-	@GetMapping("/")
-	public String index(){
-		return "index";
-	}
-	
-	
+	@Autowired
+	private ProdutoRepository produtoRepository;
+
 	@GetMapping("/login")
 	public String login(){
 		return "login";
+	}
+
+
+	@GetMapping("/")
+	public String index(){
+		return "index";
 	}
 
 	@GetMapping("/falacomigo")
 	public String contato() {
 		return "contato";
 	}
+
+	//Diretoria
 
 	@GetMapping("/diretoria")
 	public String diretoria(Model model) {		
@@ -56,10 +64,24 @@ public class VisitanteController {
 		return "sejaSocio";
 	}
 
+	//Produtos
+
 	@GetMapping("/produtos")
-	public String produtos() {
+	public String produtos(Model model) {
+		List<Produto> produtos = produtoRepository.findAll();		
+		model.addAttribute("produtos", produtos);
 		return "produtos";
 	}
+
+	@GetMapping("/produto/{categoria}/{id}")
+	public String mostrarProduto(Produto produto, @PathVariable(name="id") Long idProduto, @PathVariable(name="categoria") String categoriaProduto){
+		
+		produto = produtoRepository.findOne(idProduto);
+
+		return "redirect:/editarProdutos";
+	}
+
+	//Agenda
 
 	@GetMapping("/agenda")
 	public String agenda() {

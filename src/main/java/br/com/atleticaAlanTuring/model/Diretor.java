@@ -29,9 +29,11 @@ public class Diretor implements Serializable {
 	@NotEmpty
 	private String nome;	
 	
+	
 	@NotNull
 	@NotEmpty
 	private String login;	
+	
 	
 	@NotNull
 	@NotEmpty
@@ -40,6 +42,7 @@ public class Diretor implements Serializable {
 	@NotNull
 	@NotEmpty
 	private String facebook;
+	
 	
 	@Email
 	@NotNull
@@ -57,6 +60,7 @@ public class Diretor implements Serializable {
 	private List<Permissao> permissoes;
 
 	private boolean ativo;
+	
 	
 	
 	public List<Grupo> getGrupos() {
@@ -107,6 +111,7 @@ public class Diretor implements Serializable {
 		this.senha = senha;
 	}
 
+	
 	public Long getId() {
 		return id;
 	}
@@ -138,6 +143,7 @@ public class Diretor implements Serializable {
 	public void setFacebook(String facebook) {
 		this.facebook = facebook;
 	}
+
 
 	public String getLogin() {
 		
@@ -175,4 +181,5 @@ public class Diretor implements Serializable {
 		return "Diretor [id=" + id + ", nome=" + nome + ", login=" + login + "]";
 	}
 
+	
 }

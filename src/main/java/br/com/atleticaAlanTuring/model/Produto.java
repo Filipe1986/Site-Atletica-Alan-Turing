@@ -1,53 +1,88 @@
 package br.com.atleticaAlanTuring.model;
 
+import java.math.BigDecimal;
+
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 public class Produto {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idProduto;
+	private Long id;
 
-	private String nomeProduto;
+	@NotNull
+	@NotEmpty
+	private String nome;
 
-	private String pathFotoProduto;
+	private String descricao;
+	
+	@NotNull
+	@Max(999)
+	private Integer quantidadeEstoque;
+	
+	@NotNull	
+	private BigDecimal preco;
 
-	private String tamanho;
-
-	public Long getIdProduto() {
-		return idProduto;
+	@Enumerated(EnumType.STRING)
+	private Categoria categoria;
+	
+	public BigDecimal getPreco() {
+		return preco;
 	}
 
-	public void setIdProduto(Long idProduto) {
-		this.idProduto = idProduto;
+	public void setPreco(BigDecimal preco) {
+		this.preco = preco;
 	}
 
-	public String getNomeProduto() {
-		return nomeProduto;
+	public Long getId() {
+		return id;
 	}
 
-	public void setNomeProduto(String nomeProduto) {
-		this.nomeProduto = nomeProduto;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
-	public String getPathFotoProduto() {
-		return pathFotoProduto;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setPathFotoProduto(String pathFotoProduto) {
-		this.pathFotoProduto = pathFotoProduto;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
-	public String getTamanho() {
-		return tamanho;
+	public String getDescricao() {
+		return descricao;
 	}
 
-	public void setTamanho(String tamanho) {
-		this.tamanho = tamanho;
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
+
+	public Integer getQuantidadeEstoque() {
+		return quantidadeEstoque;
+	}
+
+	public void setQuantidadeEstoque(Integer quantidadeEstoque) {
+		this.quantidadeEstoque = quantidadeEstoque;
+	}
+
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
+	
 
 }
