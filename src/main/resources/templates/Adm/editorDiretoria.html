@@ -36,35 +36,35 @@
 							</div>
 
 							<div class="form-group">
-								<label class="control-label">Nome: </label> <input
-									class="form-control" type="text" placeholder="Insira o Nome"
+								<label for="nomeDiretor" class="control-label">Nome: </label> <input
+									class="form-control" id="nomeDiretor" type="text" placeholder="Insira o Nome"
 									th:field="*{nome}" />
 							</div>
 							
 							<div class="form-group">
-								<label class="control-label">Cargo: </label>
+								<label for="cargoDiretor" class="control-label">Cargo: </label>
 								<input
-									class="form-control" type="text" placeholder="Insira o Cargo"
+									class="form-control" id="cargoDiretor" type="text" placeholder="Insira o Cargo"
 									th:field="*{cargo}" />
 							</div>
 
 							<div class="form-group">
-								<label class="control-label">Facebook: </label> <input
-									class="form-control" type="text" placeholder="Insira o link para o perfil"
+								<label for="facebookDiretor" class="control-label">Facebook: </label> <input
+									class="form-control" type="text" id="facebookDiretor" placeholder="Insira o link para o perfil"
 									th:field="*{facebook}" />
 							</div>
-							
+
 							<div class="form-group">
 								<label class="control-label">Email: </label> <input
 									class="form-control" type="email" placeholder="Insira seu email"
 									th:field="*{email}" />
 							</div>
 							
-							<div class="form-group">
+<!-- 							<div class="form-group">
 								<label class="control-label">Senha: </label> <input
 									class="form-control" type="password" placeholder="Insira sua senha"
 									th:field="*{senha}" />
-							</div>
+							</div> -->
 
 							<div class="pull-right">
 								<button type="submit" class="btn btn-success">

@@ -1,14 +1,12 @@
 package br.com.atleticaAlanTuring.model;
 
 
-import java.io.Serializable;
-import java.util.List;
+
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Email;
@@ -40,16 +38,6 @@ public class Diretor{
 	private String email;
 	
 
-	private boolean ativo;
-	
-	public boolean isAtivo() {
-		return ativo;
-	}
-
-	public void setAtivo(boolean ativo) {
-		this.ativo = ativo;
-	}
-
 	public String getEmail() {
 		return email;
 	}
@@ -57,8 +45,6 @@ public class Diretor{
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
-
 
 	public Long getId() {
 		return id;

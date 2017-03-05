@@ -160,10 +160,10 @@ color: grey; }
 /* [CONTATO] Texto */
 
 .textoContato {
-	font-size: 200%;
+	margin-top: 5%;	
+	font-size: 155%;
     display: inline-block;
     vertical-align: middle;    
-}
 }
 
 /* [CONTATO] Campo de Mensagem*/
@@ -250,8 +250,8 @@ color: grey; }
 /*[PRODUTOS] Mostrar Produtos */
 
 .mostrarProduto {
-	width: 300px;
-	height: 300px;
+	width: 150px;
+	height: 150px;
 }
 
 

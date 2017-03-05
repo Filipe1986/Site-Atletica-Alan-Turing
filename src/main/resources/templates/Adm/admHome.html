@@ -15,15 +15,20 @@
   <header th:replace="adminlayout :: menu">Menu</header>
 
   <ul><h1>Editar Páginas</h1>
-    <li  class="list-group-item" ><a th:href="@{/carrosselAdm}">Editar Carrosel</a></li>
-    <li class="list-group-item"><a th:href="@{/membrosAdm}">Editar Membros</a></li>
-    <li class="list-group-item"><a th:href="@{/equipesAdm}">Editar Equipes</a></li>
+
+    <!--Em progresso-->
     <li class="list-group-item"><a th:href="@{/editarDiretoria}">Editar Diretoria</a></li>
-    <li class="list-group-item"><a th:href="@{/institucionalAdm}">Editar Institucional</a></li>
-    <li class="list-group-item"><a th:href="@{/painelAdm}">Editar Painel</a></li>
-    <li class="list-group-item"><a th:href="@{/produtoAdm}">Editar Produtos</a></li>
+    <li class="list-group-item"><a th:href="@{/editarProdutos}">Editar Produtos</a></li>
+    <!--Não alterados-->
+    <li class="list-group-item" ><a th:href="@{/carrosselAdm}">Editar Carrosel</a></li>
+    <li class="list-group-item"><a th:href="@{/equipesAdm}">Editar Equipes</a></li>    
+    <li class="list-group-item"><a th:href="@{/institucionalAdm}">Editar Institucional</a></li>   
     <li class="list-group-item"><a th:href="@{/agendaAdm}">Editar Agenda</a></li>
     <li class="list-group-item"><a th:href="@{/contatoAdm}">Editar Contato</a></li>
+    <!--Inutilizados
+    <li class="list-group-item"><a th:href="@{/membrosAdm}">Editar Membros</a></li>
+    <li class="list-group-item"><a th:href="@{/painelAdm}">Editar Painel</a></li>   
+    -->
   </ul>  
 
   <footer th:replace="adminlayout :: rodape">Rodapé</footer>

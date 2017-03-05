@@ -20,18 +20,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import br.com.atletica.infra.FileSaver;
+import br.com.atleticaAlanTuring.model.Categoria;
 import br.com.atleticaAlanTuring.model.Diretor;
 import br.com.atleticaAlanTuring.model.Equipe;
+
 import br.com.atleticaAlanTuring.model.Produto;
 import br.com.atleticaAlanTuring.repository.DiretorRepository;
 import br.com.atleticaAlanTuring.repository.EquipeRepository;
-import br.com.atleticaAlanTuring.repository.ProdutoRepository;
 
+import br.com.atleticaAlanTuring.repository.ProdutoRepository;
 
 @Controller
 public class AdmController {
-
 
 	@Autowired
 	private EquipeRepository equipeRepository;
@@ -41,9 +41,6 @@ public class AdmController {
 
 	@Autowired
 	private DiretorRepository diretorRepository;
-	
-	@Autowired
-	private FileSaver fileSaver;
 
 	@GetMapping("/admHome")
 	public String escolherEditor() {
@@ -51,54 +48,76 @@ public class AdmController {
 		return "Adm/admHome";
 	}
 
+	// Carrosel
 	@GetMapping("/carrosselAdm")
-	public String editarCarrossel() {
-
+	public String editarCarrosel(Model model) {
 		return "Adm/editorCarrossel";
 	}
 
-	@GetMapping("/produtoAdm")
-	public String editarProdutos(Model model) {
-		model.addAttribute("produto", new Produto());
+	// Produto
+	@GetMapping("/editarProdutos")
+	public String listarProdutos(Produto produto, Model model) {
+		List<Produto> produtos = produtoRepository.findAll();
+		model.addAttribute("produtos", produtos);
+		model.addAttribute("categorias", Categoria.values());
 		return "Adm/editorProduto";
-
 	}
 
+	@PostMapping("/cadastrarprodutos")
+	public String cadastrarProduto(Produto produto, Model model) {
+		produtoRepository.save(produto);
+		return "redirect:/editarProdutos";
+	}
+
+	@GetMapping("/removerproduto/{id}")
+	public String removerProduto(@PathVariable(name = "id") Long idProduto) {
+		produtoRepository.delete(idProduto);
+		return "redirect:/editarProdutos";
+	}
+
+	@GetMapping(value = "/api/produtos", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<Produto>> apiProdutos() {
+
+		List<Produto> produtos = produtoRepository.findAll();
+
+		return new ResponseEntity<List<Produto>>(produtos, HttpStatus.OK);
+	}
+
+	// Agenda
 	@GetMapping("/agendaAdm")
 	public String editarAgenda() {
 		return "Adm/editorAgenda";
 	}
 
-	//[COMEÇO] Diretoria
-
+	// Diretoria
 	@GetMapping("/editarDiretoria")
 	public String listarDiretoria(Diretor diretor, Model model) {
-		List<Diretor> diretores = diretorRepository.findAll();		
-		model.addAttribute("diretores", diretores);		
+		List<Diretor> diretores = diretorRepository.findAll();
+		model.addAttribute("diretores", diretores);
 		return "Adm/editorDiretoria";
 	}
-			
+
 	@PostMapping("/cadastrardiretor")
-	public String cadastrarDiretor(Diretor diretor){
+	public String cadastrarDiretor(Diretor diretor) {
 		diretorRepository.save(diretor);
 		return "redirect:/editarDiretoria";
 	}
-	
+
 	@GetMapping("/removerdiretor/{id}")
-	public String removerDiretor(@PathVariable(name="id") Long idDiretor){
+	public String removerDiretor(@PathVariable(name = "id") Long idDiretor) {
 		diretorRepository.delete(idDiretor);
 		return "redirect:/editarDiretoria";
 	}
-	
+
 	@GetMapping(value = "/api/diretores", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<List<Diretor>> apiClientes(){
-	
+	public ResponseEntity<List<Diretor>> apiDiretores() {
+
 		List<Diretor> diretores = diretorRepository.findAll();
-		
+
 		return new ResponseEntity<List<Diretor>>(diretores, HttpStatus.OK);
 	}
 
-	//[FINAL] Diretoria
+	// Contato
 
 	@GetMapping("/contatoAdm")
 	public String editarContato() {
@@ -111,18 +130,9 @@ public class AdmController {
 		return "Adm/editorEquipes";
 	}
 
-
-
 	@GetMapping("/institucionalAdm")
 	public String editarInstitucional() {
-
 		return "Adm/editorInstitucional";
-	}
-
-	@GetMapping("/painelAdm")
-	public String editarPainel() {
-
-		return "Adm/editorPainel";
 	}
 
 	@PostMapping("/adicionarNovaEquipe")
@@ -137,18 +147,5 @@ public class AdmController {
 		produtoRepository.saveAndFlush(produto);
 		return "redirect:/produtoAdm";
 	}
-	
-	@PostMapping("/addNovoProduto")
-	@ResponseBody
-	public String gravarNovoProduto( MultipartFile sumarioPath, @Valid Produto produto, BindingResult result){
-
-		
-		String path = fileSaver.write("arquivos-sumario", sumarioPath);
-		produto.setSumarioPath(path);
-		produtoRepository.saveAndFlush(produto);
-		return "redirect:/produtoAdm";
-	}
-	
-	
 
 }
