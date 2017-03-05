@@ -3,10 +3,12 @@
 <head>
 
 <title>Atlética Alan Turing</title>
-<link rel="shortcut icon" href="favicon.ico"/>
+<link rel="shortcut icon" href="favicon.ico" />
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width"/>
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" />
+<meta name="viewport" content="width=device-width" />
+<link
+	href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"
+	rel="stylesheet" />
 <link href="adminstylesheet.css" rel="stylesheet" />
 
 </head>
@@ -15,15 +17,29 @@
 	<header th:replace="adminlayout :: menu">Menu</header>
 
 	<h1 class="form col-sm-4 col-sm-offset-4">Produto</h1>
-	
-	<form class="form col-sm-4 col-sm-offset-4" th:action="@{/adicionarNovoProduto}" th:object="${produto}"   method="POST">
+
+	<form class="form col-sm-4 col-sm-offset-4"
+		th:action="@{/adicionarNovoProduto}" th:object="${produto}"
+		method="POST">
 		<h2>Nome Produto</h2>
-		<div >
+		<div>
 			<input type="text" th:field="*{nomeProduto}" />
 		</div>
-		<button type="submit"> Adicionr Produto</button>
+		<button type="submit">Adicionr Produto</button>
 	</form>
 
+
+	<form class="form col-sm-4 col-sm-offset-4"
+		th:action="@{/addNovoProduto}" th:object="${produto}"
+		enctype="multipart/form-data" method="POST">
+
+		<h2>Nome Produto 2</h2>
+		<div>
+			<input type="text" th:field="*{nomeProduto}" /> <input type="file"
+				th:field="*{sumarioPath}" />
+		</div>
+		<button type="submit">Adicionr Produto 2</button>
+	</form>
 	<footer th:replace="adminlayout :: rodape">Rodapé</footer>
 
 </body>

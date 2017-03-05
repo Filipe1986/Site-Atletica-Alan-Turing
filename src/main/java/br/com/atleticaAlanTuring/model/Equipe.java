@@ -22,9 +22,6 @@ public class Equipe {
 
 	private String modalidade;
 
-	@ManyToMany(mappedBy = "equipes")
-	private List<Membro> atletas;
-
 	private String pathFotosEquipe;
 
 	public Long getIdEquipe() {
@@ -43,13 +40,7 @@ public class Equipe {
 		this.modalidade = modalidade;
 	}
 
-	public List<Membro> getAtletas() {
-		return atletas;
-	}
 
-	public void setAtletas(List<Membro> atletas) {
-		this.atletas = atletas;
-	}
 
 	public String getPathFotosEquipe() {
 		return pathFotosEquipe;

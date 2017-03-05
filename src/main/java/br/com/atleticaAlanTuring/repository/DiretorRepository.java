@@ -7,9 +7,4 @@ import br.com.atleticaAlanTuring.model.Diretor;
 
 @Repository
 public interface DiretorRepository extends JpaRepository<Diretor, Long> {
-
-	Diretor findByLogin(String login);
-
-
-
 }

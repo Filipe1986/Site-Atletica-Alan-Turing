@@ -16,10 +16,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 
 @Entity
-public class Diretor implements Serializable {
-	
-	private static final long serialVersionUID = 1L;
-
+public class Diretor{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,10 +25,6 @@ public class Diretor implements Serializable {
 	@NotNull
 	@NotEmpty
 	private String nome;	
-	
-	@NotNull
-	@NotEmpty
-	private String login;	
 	
 	@NotNull
 	@NotEmpty
@@ -46,49 +39,15 @@ public class Diretor implements Serializable {
 	@NotEmpty
 	private String email;
 	
-	@NotNull
-	@NotEmpty
-	private String senha;
-	
-	@ManyToMany
-	private List<Grupo> grupos;
-	
-	@ManyToMany
-	private List<Permissao> permissoes;
 
 	private boolean ativo;
 	
-	
-	public List<Grupo> getGrupos() {
-		return grupos;
-	}
-
-	public void setGrupos(List<Grupo> grupos) {
-		this.grupos = grupos;
-	}
-
-	public List<Permissao> getPermissoes() {
-		return permissoes;
-	}
-
-	public void setPermissoes(List<Permissao> permissoes) {
-		this.permissoes = permissoes;
-	}
-
 	public boolean isAtivo() {
 		return ativo;
 	}
 
 	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
-	public void setLogin(String login) {
-		this.login = login;
 	}
 
 	public String getEmail() {
@@ -99,13 +58,7 @@ public class Diretor implements Serializable {
 		this.email = email;
 	}
 
-	public String getSenha() {
-		return senha;
-	}
 
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
 
 	public Long getId() {
 		return id;
@@ -137,42 +90,6 @@ public class Diretor implements Serializable {
 
 	public void setFacebook(String facebook) {
 		this.facebook = facebook;
-	}
-
-	public String getLogin() {
-		
-		return login;
-	}
-	
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		return result;
-	}
-	
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Diretor other = (Diretor) obj;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		return true;
-	}
-
-
-	@Override
-	public String toString() {
-		return "Diretor [id=" + id + ", nome=" + nome + ", login=" + login + "]";
 	}
 
 }

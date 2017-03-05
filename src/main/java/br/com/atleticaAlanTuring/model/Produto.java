@@ -1,5 +1,8 @@
 package br.com.atleticaAlanTuring.model;
 
+
+
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,21 +13,15 @@ public class Produto {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idProduto;
+	private int idProduto;
 
 	private String nomeProduto;
-
-	private String pathFotoProduto;
-
+	
+	private String sumarioPath;
+	
 	private String tamanho;
-
-	public Long getIdProduto() {
-		return idProduto;
-	}
-
-	public void setIdProduto(Long idProduto) {
-		this.idProduto = idProduto;
-	}
+	
+	
 
 	public String getNomeProduto() {
 		return nomeProduto;
@@ -34,14 +31,6 @@ public class Produto {
 		this.nomeProduto = nomeProduto;
 	}
 
-	public String getPathFotoProduto() {
-		return pathFotoProduto;
-	}
-
-	public void setPathFotoProduto(String pathFotoProduto) {
-		this.pathFotoProduto = pathFotoProduto;
-	}
-
 	public String getTamanho() {
 		return tamanho;
 	}
@@ -49,5 +38,23 @@ public class Produto {
 	public void setTamanho(String tamanho) {
 		this.tamanho = tamanho;
 	}
+
+	public int getIdProduto() {
+		return idProduto;
+	}
+
+	public void setIdProduto(int idProduto) {
+		this.idProduto = idProduto;
+	}
+
+	public String getSumarioPath() {
+		return sumarioPath;
+	}
+
+	public void setSumarioPath(String sumarioPath) {
+		this.sumarioPath = sumarioPath;
+	}
+	
+
 
 }
