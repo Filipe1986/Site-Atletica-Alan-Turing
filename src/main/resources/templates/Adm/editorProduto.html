@@ -31,7 +31,7 @@
 							<h2>Novo Produto</h2>
 							<div class="form-group" style="display: none;">
 								<label class="control-label">ID: </label> <input
-									class="form-control" type="text" 
+									class="form-control" type="text"
 									th:field="*{id}" />
 							</div>
 
@@ -45,7 +45,7 @@
 							<div class="form-group">
 								<label for="nomeProduto" class="control-label">Nome: </label> <input
 									class="form-control" id="nomeProduto" type="text" placeholder="Insira o Nome"
-									th:field="*{nome}" />
+									th:field="*{nome}"/>
 							</div>		
 
 							<div class="form-group">							
@@ -57,12 +57,12 @@
 							<div class="form-group">
 								<label for="precoProduto" class="control-label">Preço: </label> <input
 									class="form-control" type="text" id="precoProduto" placeholder="Insira o Valor do Produto"
-									th:field="*{preco}" />
+									th:field="*{preco}"/>
 							</div>
 
 							<div class="form-group">
 								<label for="descricaoProduto">Descrição:</label>
-								<textarea th:field="*{descricao}" class="form-control" rows="10" id="descricaoProduto" placeholder="Insira uma Descrição"></textarea>						
+								<textarea th:field="*{descricao}" class="form-control" rows="8" id="descricaoProduto" placeholder="Insira uma Descrição"></textarea>						
 							</div>							
 
 							<div class="pull-right">
@@ -93,10 +93,12 @@
 								<h4 th:lgtext="${produto.nome}">Nome</h4>
 								<span class="badge" th:text="${produto.categoria}">Categoria</span> 
 								<span class="badge" th:text="'R$' + ${produto.preco}">Preço</span> 
-								<span class="badge" th:text="${produto.quantidadeEstoque}">Quantidade em Estoque</span>
-
+								<span class="badge" th:text="${produto.quantidadeEstoque + ' em Estoque'}">Quantidade em Estoque</span>
 							</div>
 							<div class="col-xs-2">								
+								<!-- <div class="row">
+									<a class="btn btn-danger pull-right botaoRemover" th:href="@{/cadastrarprodutos/__${produto.id}__}"><span class="glyphicon glyphicon-pencil"></span></a>
+								</div> -->	
 								<div class="row">
 									<a class="btn btn-danger pull-right botaoRemover" th:href="@{/removerproduto/__${produto.id}__}"><span class="glyphicon glyphicon-remove"></span></a>
 								</div>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Atlética Alan Turing - Quem sou eu?</title>
+<link rel="shortcut icon" href="favicon.ico"/>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width"/>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" />
+<link href="adminstylesheet.css"    rel="stylesheet" />
+
+</head>
+<body>
+
+  <header th:replace="adminlayout :: menu">Menu</header>
+
+        <form action="login" method="post" class="form-signin">    
+
+            <fieldset>
+                <h1 class="text-center">Login</h1>
+                <div th:if="${param.error}" class="alert alert-error">    
+                    Usuário e/ou senha inválidos.
+                </div>      
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>         
+                <label for="username">Usuário</label>
+                <input type="text" class="form-control" id="username" name="username" placeholder="Insira seu Usuário"/>        
+                <label for="password">Senha</label>
+                <input type="password" id="password" name="password"  class="form-control" placeholder="Insira sua Senha"/>    
+                <div class="form-actions">
+                   <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
+                </div>
+            </fieldset>
+
+        </form>
+    
+  </body>
+</html>

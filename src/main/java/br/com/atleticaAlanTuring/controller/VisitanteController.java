@@ -27,7 +27,6 @@ public class VisitanteController {
 		return "login";
 	}
 
-
 	@GetMapping("/")
 	public String index(){
 		return "index";
@@ -73,12 +72,13 @@ public class VisitanteController {
 		return "produtos";
 	}
 
-	@GetMapping("/produto/{categoria}/{id}")
-	public String mostrarProduto(Produto produto, @PathVariable(name="id") Long idProduto, @PathVariable(name="categoria") String categoriaProduto){
+	@GetMapping("/produtos/{categoria}/{id}")
+	public String mostrarProduto(Model model, Produto produtos, @PathVariable(name="id") Long idProduto, @PathVariable(name="categoria") String categoriaProduto){
 		
-		produto = produtoRepository.findOne(idProduto);
+		produtos = produtoRepository.findOne(idProduto);
+		model.addAttribute("produtos", produtos);
 
-		return "redirect:/editarProdutos";
+		return "paginaProduto";
 	}
 
 	//Agenda

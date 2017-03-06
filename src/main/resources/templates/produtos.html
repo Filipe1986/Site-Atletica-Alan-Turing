@@ -17,16 +17,19 @@
 
 	<main>
 
-		<div class="container-fluid">
+		<div class="container text-center">
 
-			<div class="flexbox text-center">
+			<h1 th:if="${produtos.size()} > 1">Confira nossos produtos</h1>
+
+			<div class="flexbox">
 
 				<p th:if="${produtos.size()} == 0">Não há produtos no momento</p>
 
-				<div th:each="produto : ${produto}" class="mostrarProduto" >
+				<div th:each="produto : ${produtos}" class="mostrarProduto">
 
-					<p th:text="${diretor.nome}">Nome</p>					
-					<img src="produto.jpg" alt="Produto"/>
+					<a th:href="@{'/produtos/' + ${produto.categoria} + '/' + ${produto.id}}">									
+						<img src="produto.jpg" alt="Produto"/>
+					</a>	
 				
 				</div>		 	
 

@@ -26,7 +26,10 @@ main {
 
 @media (max-width: 767px) {	
     .logo {
-        margin: 0 auto !important;
+   		margin: 0 auto;
+       	transform: translateX(-50%);
+	  	left: 50%;	  	
+	  	position: absolute; 	
     }
 }
 
@@ -34,6 +37,14 @@ main {
 	width: 80px;
 	height: 80px;
 }
+
+.logouniriotec {
+	margin-top: 0;
+	padding-top: 0;
+	width: 120px;
+	height: 50px;
+}
+
 
 /* Menu */
 .navbar-default {
@@ -126,7 +137,7 @@ color: grey; }
 
 .subtituloSobre {
 	margin-bottom: 5%;
-	color: darkred;
+	color: black;
 	font-size: 300%;
 
 }
@@ -150,14 +161,12 @@ color: grey; }
 	font-size: 185%;
 }
 
-/* [CONTATO] Título */
+/* [CONTATO]*/
 
 .tituloContato {
 	margin-bottom: 5%;	
 	font-size: 400%;
 }
-
-/* [CONTATO] Texto */
 
 .textoContato {
 	margin-top: 5%;	
@@ -166,14 +175,13 @@ color: grey; }
     vertical-align: middle;    
 }
 
-/* [CONTATO] Campo de Mensagem*/
 
 #mensagem {
 	resize: none;
 }
 
-/* [CONTATO] Foto CCET*/
 .unirioccet {
+	margin-top: 0%;
 	vertical-align: middle;
 	display: inline-block;
 	max-width: 100%;
@@ -229,7 +237,13 @@ color: grey; }
     color: #fff;
 }
 
-/*[MEUS TIMES] Esportes */
+.botaoDiretoria{
+	margin-top:10px;
+}
+
+/*[MEUS TIMES] */
+
+.panel-body
 
 .panel-body {
 	margin: 0 auto !important;	
@@ -243,15 +257,44 @@ color: grey; }
 	min-height: 100%;
 }
 
-.panel-body:last-child {
-	margin-bottom: 5px;
+.panel-default:first-child {
+	margin-top: 1%;
 }
 
-/*[PRODUTOS] Mostrar Produtos */
+.panel-default:last-child {
+	margin-bottom: 1%;
+}
 
-.mostrarProduto {
+/*[PRODUTOS] */
+
+.mostrarProduto img{
 	width: 150px;
 	height: 150px;
+	margin: 3%;
 }
+
+/*[SEJA SÓCIO]*/
+
+.destaqueSocio{
+	margin-top: 0;
+}
+
+.vantagens {
+	text-align: left;
+}
+
+.fotoSocio {
+	max-width: 100%;
+	max-height: 100%;
+	margin: 3% 0%;
+}
+
+.botaoSocio {
+	margin-top: 3%;
+	width: 240px;
+	height: 70px;
+	font-size: 28px;
+}
+
 
 

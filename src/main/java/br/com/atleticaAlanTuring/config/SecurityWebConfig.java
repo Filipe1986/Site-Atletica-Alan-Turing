@@ -4,6 +4,8 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.web.csrf.CsrfTokenRepository;
+import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
 
 @EnableWebSecurity
 public class SecurityWebConfig extends WebSecurityConfigurerAdapter {
@@ -11,10 +13,18 @@ public class SecurityWebConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 
-		/* lista dos endereços que não são acessiveis sem autenticação */
+		/* Lista dos endereços que não são acessiveis sem autenticação */
 		http.authorizeRequests().antMatchers("//admHome", "/carrosselAdm", "/equipesAdm", "/editarDiretoria",
 				"/institucionalAdm", "/painelAdm", "/produtoAdm", "/agendaAdm", "/contatoAdm").hasRole("USER").and()
-				.formLogin();
+				.formLogin()
+				.loginPage("/login").permitAll()
+				.defaultSuccessUrl("/admHome")
+		        .failureUrl("/login?error=true");
+		
+		/* CSRF Token */
+		http.csrf()
+	    .csrfTokenRepository(csrfTokenRepository());				
+			    
 	}
 
 	@Override
@@ -25,6 +35,13 @@ public class SecurityWebConfig extends WebSecurityConfigurerAdapter {
 
 			e.printStackTrace();
 		}
+	}
+	
+	private CsrfTokenRepository csrfTokenRepository() 
+	{ 
+	    HttpSessionCsrfTokenRepository repository = new HttpSessionCsrfTokenRepository(); 
+	    repository.setSessionAttributeName("_csrf");
+	    return repository; 
 	}
 
 }
