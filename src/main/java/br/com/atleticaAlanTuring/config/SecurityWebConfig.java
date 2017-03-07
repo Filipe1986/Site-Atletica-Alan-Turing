@@ -14,7 +14,11 @@ public class SecurityWebConfig extends WebSecurityConfigurerAdapter {
 		/* lista dos endereços que não são acessiveis sem autenticação */
 		http.authorizeRequests().antMatchers("//admHome", "/carrosselAdm", "/equipesAdm", "/editarDiretoria",
 				"/institucionalAdm", "/painelAdm", "/produtoAdm", "/agendaAdm", "/contatoAdm").hasRole("USER").and()
-				.formLogin().loginPage("/login").permitAll();
+				.formLogin().loginPage("/login").permitAll()
+				.defaultSuccessUrl("/admHome")
+		        .failureUrl("/login?error=true");
+					
+			    
 	}
 
 	@Override

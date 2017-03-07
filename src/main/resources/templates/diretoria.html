@@ -16,7 +16,7 @@
 
 	<main>	
 
-		<div class="container-fluid">
+		<div class="container">
 
 			<div class="flexbox text-center">
 
@@ -24,21 +24,31 @@
 
 				<div th:each="diretor : ${diretores}" class="fotoDiretoria">
 
-					<img src="http://lorempixel.com/250/500" alt="Foto Membro"/>
+					<img th:alt="${diretor.nome}" th:src="@{images/ + ${diretor.nome}}"/>
 
 					<div class="legendaDiretoria">
+					
+						<div class="row">
+						
+							<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
 				          
-						<p th:text="${diretor.nome}">Nome</p>
-
-						<p th:text="${diretor.cargo}">Cargo
+								<p th:text="${diretor.nome}">Nome</p>
+		
+								<p th:text="${diretor.cargo}">Cargo</p>
+								
+							</div>
 							
-							<a th:href="@{${diretor.facebook}}">
-									<button type="button" class="btn btn-default btn-sm">
-										<i class="fa fa-facebook" aria-hidden="true"></i>
-				 					</button>
-				 			</a>
-
-				 		</p>				 		
+							<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+								
+								<a th:href="@{'https://www.facebook.com/' + ${diretor.facebook}}">
+									<button type="button" class="botaoDiretoria btn btn-default btn-sm pull-left">
+							          	<i class="fa fa-facebook" aria-hidden="true"></i>
+							        </button>											 				
+						 		</a>
+					 		
+					 		</div>	
+				 		
+				 		</div>			 		
 
 				 	</div>
 				 	

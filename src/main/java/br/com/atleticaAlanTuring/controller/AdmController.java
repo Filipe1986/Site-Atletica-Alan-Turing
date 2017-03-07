@@ -1,5 +1,8 @@
 package br.com.atleticaAlanTuring.controller;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +14,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import br.com.atleticaAlanTuring.model.Categoria;
 import br.com.atleticaAlanTuring.model.Diretor;
@@ -62,6 +66,17 @@ public class AdmController {
 		return "redirect:/editarProdutos";
 	}
 
+	@GetMapping("/cadastrarprodutos/{id}")
+	public String editarProduto(Model model, @PathVariable Long id){
+
+		Produto produto = produtoRepository.findOne(id);
+		
+		model.addAttribute("produtos", produto);
+		model.addAttribute("categorias", Categoria.values());
+		
+		return "Adm/editorProduto";
+	}
+
 	@GetMapping("/removerproduto/{id}")
 	public String removerProduto(@PathVariable(name = "id") Long idProduto) {
 		produtoRepository.delete(idProduto);
@@ -88,6 +103,15 @@ public class AdmController {
 		List<Diretor> diretores = diretorRepository.findAll();
 		model.addAttribute("diretores", diretores);
 		return "Adm/editorDiretoria";
+	}
+	
+	@RequestMapping(value = "images/{imageName}")
+	@ResponseBody
+	public byte[] getImage(@PathVariable(value = "imageName") String imageName, Diretor diretor) throws IOException {
+
+		File serverFile = new File("/resources/static/images" + imageName);
+
+	    return Files.readAllBytes(serverFile.toPath());
 	}
 
 	@PostMapping("/cadastrardiretor")
