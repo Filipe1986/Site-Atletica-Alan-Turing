@@ -14,7 +14,107 @@
 
 	<header th:replace="adminlayout :: menu">Menu</header>
 
-	<h1>Agenda</h1>
+	<div class="container">
+
+		<div class="row">
+
+			<h1 class="text-center tituloPagina">Editar Agenda</h1>
+
+			<div class="col-xs-12 col-sm-6 col-lg-6">
+				
+				<form class="form" th:action="@{/cadastrareventos}"
+						th:object="${evento}" method="post">
+
+						<fieldset>						
+							
+							<h2>Novo Evento</h2>
+							<div class="form-group" style="display: none;">
+								<label class="control-label">ID: </label> <input
+									class="form-control" type="text" 
+									th:field="*{id}" />
+							</div>
+
+							<div class="form-group">
+								<label for="nomeEvento" class="control-label">Nome: </label> <input
+									class="form-control" id="nomeEvento" type="text" placeholder="Insira o Nome do Evento"
+									th:field="*{name}" />
+							</div>
+							
+							<div class="form-group">
+								<label for="inicioEvento" class="control-label">Data de Ínicio: </label>
+								<input
+									class="form-control" type="date" id="inicioEvento" placeholder="Insira a data de início"
+									th:field="*{startdate}" />
+							</div>
+
+							<div class="form-group">
+								<label for="finalEvento" class="control-label">Data de Término <i>(Opcional)</i>: </label> <input
+									class="form-control" type="date" id="finalEvento" placeholder="Insira a data de término"
+									th:field="*{enddate}" />
+							</div>
+							
+							<div class="form-group">
+								<label for="corEvento" class="control-label">Cor do Evento <i>(Opcional)</i>: </label> <input
+									class="form-control" type="color" id="corEvento" placeholder="Insira uma cor para estilização"
+									th:field="*{color}" />
+							</div>
+							
+							<div class="form-group">
+								<label for="linkEvento" class="control-label">Link para o evento <i>(Opcional)</i>: </label> <input
+									class="form-control" type="text" id="linkEvento" placeholder="Insira uma URL completa. Ex: https://www.meuevento.com.br"
+									th:field="*{url}" />
+							</div>
+
+							<div class="pull-right">
+								<button type="submit" class="btn btn-success">
+									<i class="fa fa-check" aria-hidden="true"></i> Salvar
+								</button>
+								<button type="reset" class="btn btn-defaul">
+									<i class="fa fa-eraser" aria-hidden="true"></i> Limpar
+								</button>
+							</div>
+
+						</fieldset>
+
+				</form>
+
+			</div>
+
+			<div class="col-xs-12 col-sm-6 col-lg-6">
+			
+				<h2>Eventos Cadastrados</h2>
+				
+				<h4 th:if="${eventos.size()} == 0">Você ainda não cadastrou nenhum evento!</h4>
+		
+				<div th:each="evento : ${eventos}" class="panel panel-default">
+				
+					<div class="panel-body">
+					
+						<div class="row">
+						
+							<div class="col-xs-10">
+							
+								<h4 th:lgtext="${evento.nome}">Nome</h4>
+								<span class="badge" th:text="${evento.startdate}">Início</span> 					
+								<span class="badge" th:if="${evento.enddate != null}" th:text="${evento.enddate}">Final</span>
+								<span class="badge" th:if="${evento.url != null}" th:text="${evento.url}">URL</span> 
+								<span class="badge" th:if="${evento.color != null}" th:style="'background-color:' + ${evento.color}"></span> 
+																					
+							</div>
+							<div class="col-xs-2">								
+								<div class="row">
+									<a class="btn btn-danger pull-right botaoRemover" th:href="@{/removerevento/__${evento.id}__}"><span class="glyphicon glyphicon-remove"></span></a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+		</div>	
+
+	</div>
 
 	<footer th:replace="adminlayout :: rodape">Rodapé</footer>
 

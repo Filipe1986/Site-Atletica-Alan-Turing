@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width"/>
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" />
 <link href="stylesheet.css"	rel="stylesheet" />
-<link href="bootstrap-year-calendar.css" rel="stylesheet" />
+<link href="monthly.css" rel="stylesheet" />
 
 </head>
 <body>
@@ -17,9 +17,9 @@
 
 	<main>
 
-		<div class="container-fluid">
-		
-			<div data-provide="calendar"></div>
+		<div class="container">	
+
+			<div class="monthly" id="mycalendar"></div>
 
 		</div>
 		
@@ -28,7 +28,13 @@
 	<footer th:replace="layout :: rodape">Rodapé</footer>
 
 	<!--Calendário-->
-	<script src="bootstrap-year-calendar.js"></script>
+	<script type="text/javascript" src="monthly.js"></script>
+	<script type="text/javascript">
+	    $(window).load( function() {
+	        $('#mycalendar').monthly();
+	    });
+</script>
+	
 
 </body>
 </html>

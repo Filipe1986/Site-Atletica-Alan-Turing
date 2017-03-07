@@ -17,14 +17,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+
 import br.com.atleticaAlanTuring.model.Categoria;
 import br.com.atleticaAlanTuring.model.Diretor;
 import br.com.atleticaAlanTuring.model.Equipe;
-
+import br.com.atleticaAlanTuring.model.Evento;
 import br.com.atleticaAlanTuring.model.Produto;
 import br.com.atleticaAlanTuring.repository.DiretorRepository;
 import br.com.atleticaAlanTuring.repository.EquipeRepository;
-
+import br.com.atleticaAlanTuring.repository.EventoRepository;
 import br.com.atleticaAlanTuring.repository.ProdutoRepository;
 
 @Controller
@@ -38,6 +39,9 @@ public class AdmController {
 
 	@Autowired
 	private DiretorRepository diretorRepository;
+	
+	@Autowired
+	private EventoRepository eventoRepository;
 
 	@GetMapping("/admHome")
 	public String escolherEditor() {
@@ -66,7 +70,7 @@ public class AdmController {
 		return "redirect:/editarProdutos";
 	}
 
-	@GetMapping("/cadastrarprodutos/{id}")
+	/*@GetMapping("/cadastrarprodutos/{id}")
 	public String editarProduto(Model model, @PathVariable Long id){
 
 		Produto produto = produtoRepository.findOne(id);
@@ -75,7 +79,7 @@ public class AdmController {
 		model.addAttribute("categorias", Categoria.values());
 		
 		return "Adm/editorProduto";
-	}
+	}*/
 
 	@GetMapping("/removerproduto/{id}")
 	public String removerProduto(@PathVariable(name = "id") Long idProduto) {
@@ -91,10 +95,33 @@ public class AdmController {
 		return new ResponseEntity<List<Produto>>(produtos, HttpStatus.OK);
 	}
 
-	// Agenda
-	@GetMapping("/agendaAdm")
-	public String editarAgenda() {
+	// Agenda	
+	@GetMapping("/editarAgenda")
+	public String listareEventos(Evento evento, Model model) {
+		List<Evento> eventos = eventoRepository.findAll();
+		model.addAttribute("eventos", eventos);		
 		return "Adm/editorAgenda";
+	}
+
+	@PostMapping("/cadastrareventos")
+	public String cadastrarEvento(Evento evento) {
+		eventoRepository.save(evento);
+		return "redirect:/editarAgenda";
+	}
+
+	@GetMapping("/removerevento/{id}")
+	public String removerEvento(@PathVariable(name = "id") Long idEvento) {
+		eventoRepository.delete(idEvento);
+		return "redirect:/editarAgenda";
+	}
+
+	@GetMapping(value = "/api/eventos.json", produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public ResponseEntity<List<Evento>> apiEventos() {
+
+		List<Evento> eventos = eventoRepository.findAll();
+
+		return new ResponseEntity<List<Evento>>(eventos, HttpStatus.OK);
 	}
 
 	// Diretoria
@@ -125,8 +152,8 @@ public class AdmController {
 		diretorRepository.delete(idDiretor);
 		return "redirect:/editarDiretoria";
 	}
-
-	@GetMapping(value = "/api/diretores", produces = MediaType.APPLICATION_JSON_VALUE)
+	
+	@GetMapping(value = "/api/diretores", produces = MediaType.APPLICATION_JSON_VALUE)	
 	public ResponseEntity<List<Diretor>> apiDiretores() {
 
 		List<Diretor> diretores = diretorRepository.findAll();
