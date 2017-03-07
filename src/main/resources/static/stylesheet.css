@@ -31,6 +31,21 @@ main {
 	  	left: 50%;	  	
 	  	position: absolute; 	
     }
+    .navbar-header{
+    	min-height: 100px;
+    }
+}
+
+@media (max-width:1025px) and (min-width: 768px){
+	.logo {
+   		margin: 0 auto;
+       	transform: translateX(-50%);
+	  	left: 50%;	  	
+	  	position: absolute; 	  		
+    }   
+	.navbar-right {
+		margin-top: 80px;
+	}
 }
 
 .logounirio {
@@ -107,7 +122,7 @@ color: grey; }
     }
 }
 
-/*[SOBRE] Diagramação */
+/* [SOBRE] */
 
 .rowSobre {
 	margin-top: 100px;
@@ -122,8 +137,6 @@ color: grey; }
 	max-width: 100%
 }
 
-/*[SOBRE] Estilização */
-
 .paginaSobre < p {
 	font-size: 180%;
 	text-align: justify;	
@@ -137,9 +150,13 @@ color: grey; }
 
 .subtituloSobre {
 	margin-bottom: 5%;
-	color: black;
+	color: darkred;
 	font-size: 300%;
 
+}
+
+.subtituloSobre{
+	color: black;
 }
 
 .destaqueSobre {
@@ -243,11 +260,8 @@ color: grey; }
 
 /*[MEUS TIMES] */
 
-.panel-body
-
 .panel-body {
 	margin: 0 auto !important;	
-	height: 200px;
 	max-height: 100%;
 	max-width: 100%;	
 }
