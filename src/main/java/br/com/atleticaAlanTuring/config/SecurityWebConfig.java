@@ -17,6 +17,7 @@ public class SecurityWebConfig extends WebSecurityConfigurerAdapter {
 				.formLogin().loginPage("/login").permitAll()
 				.defaultSuccessUrl("/admHome")
 		        .failureUrl("/login?error=true");
+		
 					
 			    
 	}
