@@ -103,7 +103,7 @@ public class VisitanteController {
     public String importParse(@RequestParam("myFile") MultipartFile file) throws IllegalStateException, IOException { 
     	
     	System.out.println(file.getOriginalFilename());
-    	File arg0 = new File("C://Workspace//atletica//teste//" + file.getOriginalFilename() );
+    	File arg0 = new File("teste//" + file.getOriginalFilename());
     	arg0.createNewFile(); 
         FileOutputStream fos = new FileOutputStream(arg0); 
         fos.write(file.getBytes());
