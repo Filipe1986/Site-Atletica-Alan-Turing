@@ -19,20 +19,38 @@
 
 		<div class="container text-center">
 
-			<h1 th:if="${produtos.size()} > 1">Confira nossos produtos</h1>
+			<h1 th:if="${produtos.size()} >= 1">Só produto Pika!</h1>
 
 			<div class="flexbox">
 
 				<p th:if="${produtos.size()} == 0">Não há produtos no momento</p>
 
-				<div th:each="produto : ${produtos}" class="mostrarProduto">
-
-					<a th:href="@{'/produtos/' + ${produto.categoria} + '/' + ${produto.id}}">									
-						<img src="produto.jpg" alt="Produto"/>
-					</a>	
+				<div th:each="produto : ${produtos}" class="mostrarProduto">	
 				
+					<div class="row">					
+					
+						<h3 class="col-sm-12 col-md-12 col-lg-12"  th:text="${produto.nome}">Nome</h3>
+						
+					</div>
+					
+					<div class="row">
+					
+						<a class="col-sm-12 col-md-12 col-lg-12" th:href="@{'/produtos/' + ${produto.categoria} + '/' + ${produto.id}}">									
+							<img src="produto.jpg" alt="Produto"/>
+						</a>	
+					
+					</div>					
+										
+						<span class="badge text-center" th:text="${produto.categoria}">Categoria</span> 
+				
+					<div class="row">
+					
+						<h2 class="text-center col-sm-12 col-md-12 col-lg-12" th:text="'R$' + ${produto.preco}"></h2>
+				
+					</div>
+					
 				</div>		 	
-
+	
 		 	</div>
 									
 		</div>

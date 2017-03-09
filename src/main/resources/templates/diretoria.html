@@ -23,8 +23,10 @@
 				<p th:if="${diretores.size()} == 0">Não há diretores no momento</p>
 
 				<div th:each="diretor : ${diretores}" class="fotoDiretoria">
+				
+					<!-- th:src="@{images/ + ${diretor.nome}} -->
 
-					<img th:alt="${diretor.nome}" th:src="@{images/ + ${diretor.nome}}"/>
+					<img th:alt="${diretor.nome}" src="http://lorempixel.com/250/500"/>
 
 					<div class="legendaDiretoria">
 					

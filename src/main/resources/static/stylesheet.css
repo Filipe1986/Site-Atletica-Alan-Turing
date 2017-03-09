@@ -187,7 +187,7 @@ color: grey; }
 
 .textoContato {
 	margin-top: 5%;	
-	font-size: 155%;
+	font-size: 145%;
     display: inline-block;
     vertical-align: middle;    
 }
@@ -203,8 +203,8 @@ color: grey; }
 	display: inline-block;
 	max-width: 100%;
 	max-height: 100%;
-	width: 400px; 
-	height: 300px;
+	width: 350px; 
+	height: 250px;
 	margin: 5% 10%;
 	
 }
@@ -214,8 +214,8 @@ color: grey; }
 	display: inline-block;
 	max-width: 100%;
 	max-height: 100%;
-	width: 400px; 
-	height: 300px;
+	width: 350px; 
+	height: 250px;
 	margin: 5% 10%;
 	margin-top: 0%;
 	
@@ -269,6 +269,8 @@ color: grey; }
 .panel-body img{
 	min-width: 100%;
 	min-height: 100%;
+	max-width: 100%;
+	max-height: 100%;
 }
 
 .panel-default:first-child {
@@ -281,10 +283,26 @@ color: grey; }
 
 /*[PRODUTOS] */
 
-.mostrarProduto img{
-	width: 150px;
-	height: 150px;
+.nomeProduto{
+	min-height:50px;
+	max-height:50px;	
+}
+
+.mostrarProduto img{	
+	min-height: 150px;
+	min-width: 150px;
+	max-width: 150px;
+	max-height: 150px;
 	margin: 3%;
+}
+
+.mostrarProduto{
+	min-width: 230px;
+	min-height: 330px;
+	max-width: 230px;
+	max-height: 330px;
+	border: 1px solid lightgrey;
+	padding: 0.5%;
 }
 
 /*[SEJA SÓCIO]*/
@@ -310,5 +328,9 @@ color: grey; }
 	font-size: 28px;
 }
 
+/*[PAGINA PRODUTO]*/
+.tituloProduto{
+	font-size: 72px;
+}
 
 
