@@ -6,7 +6,9 @@
 <link rel="shortcut icon" href="favicon.ico" />
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width" />
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" />
+<link
+	href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"
+	rel="stylesheet" />
 <link href="adminstylesheet.css" rel="stylesheet" />
 
 </head>
@@ -18,89 +20,98 @@
 	<div class="container">
 
 		<div class="row">
-
 			<h1 class="text-center tituloPagina">Editar Produtos</h1>
 
 			<div class="col-xs-12 col-sm-6 col-lg-6">
-				
+
 				<form class="form" th:action="@{/cadastrarprodutos}"
-						th:object="${produto}" method="post">
+					th:object="${produto}" method="post">
 
-						<fieldset>
+					<fieldset>
 
-							<h2>Novo Produto</h2>
-							<div class="form-group" style="display: none;">
-								<label class="control-label">ID: </label> <input
-									class="form-control" type="text"
-									th:field="*{id}" />
-							</div>
+						<h2>Novo Produto</h2>
+						<div class="form-group" style="display: none;">
+							<label class="control-label">ID: </label> <input
+								class="form-control" type="text" th:field="*{id}" />
+						</div>
 
-							<div class="form-group">
-								<label for="categoriaProduto" class="control-label">Categoria: </label> 
-								<select class="form-control" id="categoriaProduto" type="text" th:field="*{categoria}">
-									<option th:each="categoria : ${categorias}" th:text="${categoria}" th:value="${categoria}">Opções</option>
-								</select>
-							</div>
+						<div class="form-group">
+							<label for="categoriaProduto" class="control-label">Categoria:
+							</label> <select class="form-control" id="categoriaProduto" type="text"
+								th:field="*{categoria}">
+								<option th:each="categoria : ${categorias}"
+									th:text="${categoria}" th:value="${categoria}">Opções</option>
+							</select>
+						</div>
 
-							<div class="form-group">
-								<label for="nomeProduto" class="control-label">Nome: </label> <input
-									class="form-control" id="nomeProduto" type="text" placeholder="Insira o Nome"
-									th:field="*{nome}"/>
-							</div>		
+						<div class="form-group">
+							<label for="nomeProduto" class="control-label">Nome: </label> <input
+								class="form-control" id="nomeProduto" type="text"
+								placeholder="Insira o Nome" th:field="*{nome}" />
+						</div>
 
-							<div class="form-group">							
-								<label for="quantidadeProduto" class="control-label">Quantidade em Estoque: </label> <input
-									class="form-control" id="quantidadeProduto" value="1" max="999" type="number" placeholder="Insira a quantidade"
-									 th:field="*{quantidadeEstoque}" />				
-							</div>					
-							
-							<div class="form-group">
-								<label for="precoProduto" class="control-label">Preço: </label> <input
-									class="form-control" type="text" id="precoProduto" placeholder="Insira o valor com casas decimais. Ex: 55.00"
-									th:field="*{preco}"/>
-							</div>
+						<div class="form-group">
+							<label for="quantidadeProduto" class="control-label">Quantidade
+								em Estoque: </label> <input class="form-control" id="quantidadeProduto"
+								value="1" max="999" type="number"
+								placeholder="Insira a quantidade"
+								th:field="*{quantidadeEstoque}" />
+						</div>
 
-							<div class="form-group">
-								<label for="descricaoProduto">Descrição:</label>
-								<textarea th:field="*{descricao}" class="form-control" rows="8" id="descricaoProduto" placeholder="Insira uma Descrição"></textarea>						
-							</div>							
+						<div class="form-group">
+							<label for="precoProduto" class="control-label">Preço: </label> <input
+								class="form-control" type="text" id="precoProduto"
+								placeholder="Insira o valor com casas decimais. Ex: 55.00"
+								th:field="*{preco}" />
+						</div>
 
-							<div class="pull-right">
-								<button type="submit" class="btn btn-success">
-									<i class="fa fa-check" aria-hidden="true"></i> Salvar
-								</button>
-								<button type="reset" class="btn btn-defaul">
-									<i class="fa fa-eraser" aria-hidden="true"></i> Limpar
-								</button>
-							</div>
+						<div class="form-group">
+							<label for="descricaoProduto">Descrição:</label>
+							<textarea th:field="*{descricao}" class="form-control" rows="8"
+								id="descricaoProduto" placeholder="Insira uma Descrição"></textarea>
+						</div>
 
-						</fieldset>
+						<div class="pull-right">
+							<button type="submit" class="btn btn-success">
+								<i class="fa fa-check" aria-hidden="true"></i> Salvar
+							</button>
+							<button type="reset" class="btn btn-defaul">
+								<i class="fa fa-eraser" aria-hidden="true"></i> Limpar
+							</button>
+						</div>
+
+					</fieldset>
 
 				</form>
 
 			</div>
 
 			<div class="col-xs-12 col-sm-6 col-lg-6">
-			
+
 				<h2>Produtos Cadastrados</h2>
-				
-				<h4 th:if="${produtos.size()} == 0">Você ainda não cadastrou nenhum produto!</h4>
-		
+
+				<h4 th:if="${produtos.size()} == 0">Você ainda não cadastrou
+					nenhum produto!</h4>
+
 				<div th:each="produto : ${produtos}" class="panel panel-default">
 					<div class="panel-body">
 						<div class="row">
 							<div class="col-xs-10">
 								<h4 th:lgtext="${produto.nome}">Nome</h4>
-								<span class="badge" th:text="${produto.categoria}">Categoria</span> 
-								<span class="badge" th:text="'R$' + ${produto.preco}">Preço</span> 
-								<span class="badge" th:text="${produto.quantidadeEstoque + ' em Estoque'}">Quantidade em Estoque</span>
+								<span class="badge" th:text="${produto.categoria}">Categoria</span>
+								<span class="badge" th:text="'R$' + ${produto.preco}">Preço</span>
+								<span class="badge"
+									th:text="${produto.quantidadeEstoque + ' em Estoque'}">Quantidade
+									em Estoque</span>
 							</div>
-							<div class="col-xs-2">								
+							<div class="col-xs-2">
 								<!-- <div class="row">
 									<a class="btn btn-danger pull-right botaoRemover" th:href="@{/cadastrarprodutos/__${produto.id}__}"><span class="glyphicon glyphicon-pencil"></span></a>
-								</div> -->	
+								</div> -->
 								<div class="row">
-									<a class="btn btn-danger pull-right botaoRemover" th:href="@{/removerproduto/__${produto.id}__}"><span class="glyphicon glyphicon-remove"></span></a>
+									<a class="btn btn-danger pull-right botaoRemover"
+										th:href="@{/removerproduto/__${produto.id}__}"><span
+										class="glyphicon glyphicon-remove"></span></a>
 								</div>
 							</div>
 						</div>
@@ -109,7 +120,7 @@
 
 			</div>
 
-		</div>	
+		</div>
 
 	</div>
 	<footer th:replace="adminlayout :: rodape">Rodapé</footer>

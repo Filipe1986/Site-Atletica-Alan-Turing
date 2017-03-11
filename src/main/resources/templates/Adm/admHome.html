@@ -3,31 +3,21 @@
 <head>
 
 <title>Atlética Alan Turing</title>
-<link rel="shortcut icon" href="favicon.ico"/>
+<link rel="shortcut icon" href="favicon.ico" />
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width"/>
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" />
-<link href="adminstylesheet.css"	rel="stylesheet" />
+<meta name="viewport" content="width=device-width" />
+<link
+	href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"
+	rel="stylesheet" />
+<link href="adminstylesheet.css" rel="stylesheet" />
 
 </head>
 <body>
 
-  <header th:replace="adminlayout :: menu">Menu</header>
+	<header th:replace="adminlayout :: menu">Menu</header>
+	<div th:replace="adminlayout :: ul"></div>
 
-  <ul><h1>Editar Páginas</h1>
-
-    <!--Em progresso-->
-    <li class="list-group-item"><a th:href="@{/editarDiretoria}">Editar Diretoria</a></li>
-    <li class="list-group-item"><a th:href="@{/editarProdutos}">Editar Produtos</a></li>
-    <li class="list-group-item"><a th:href="@{/editarAgenda}">Editar Agenda</a></li>
-    <!--Não alterados-->
-    <li class="list-group-item" ><a th:href="@{/carrosselAdm}">Editar Carrosel</a></li>
-    <li class="list-group-item"><a th:href="@{/equipesAdm}">Editar Equipes</a></li>    
-    <li class="list-group-item"><a th:href="@{/institucionalAdm}">Editar Institucional</a></li>      
-    <li class="list-group-item"><a th:href="@{/contatoAdm}">Editar Contato</a></li>
-  </ul>  
-
-  <footer th:replace="adminlayout :: rodape">Rodapé</footer>
+	<footer th:replace="adminlayout :: rodape">Rodapé</footer>
 
 </body>
 </html>

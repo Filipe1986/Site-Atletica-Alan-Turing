@@ -34,6 +34,4 @@ public class VisitanteController {
 		return "sejaSocio";
 	}
 
-
-
 }
