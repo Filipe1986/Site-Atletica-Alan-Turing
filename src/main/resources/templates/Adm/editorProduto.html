@@ -84,13 +84,6 @@
 
 				</form>
 
-
-				<!-- <form action="uploadSuccess.html" th:action="@{/fileUpload}"
-		method="post" enctype="multipart/form-data">
-		<input type="file" name="myFile" /> 
-		<input type="submit" />
-	</form> -->
-
 			</div>
 
 			<div class="col-xs-12 col-sm-6 col-lg-6">
@@ -104,7 +97,7 @@
 					<div class="panel-body">
 						<div class="row">
 							<div class="col-xs-10">
-								<h4 th:lgtext="${produto.nome}">Nome</h4>
+								<h4 th:text="${produto.nome}">Nome</h4>
 								<span class="badge" th:text="${produto.categoria}">Categoria</span>
 								<span class="badge" th:text="'R$' + ${produto.preco}">Preço</span>
 								<span class="badge"
@@ -116,9 +109,13 @@
 									<a class="btn btn-danger pull-right botaoRemover" th:href="@{/cadastrarprodutos/__${produto.id}__}"><span class="glyphicon glyphicon-pencil"></span></a>
 								</div> -->
 								<div class="row">
-									<a class="btn btn-danger pull-right botaoRemover"
-										th:href="@{/removerproduto/__${produto.id}__}"><span
-										class="glyphicon glyphicon-remove"></span></a>
+									
+									<form th:action="@{/removerproduto}"
+										 method="post">	
+											<input type="hidden" th:value="${produto.id}"  name="id" />
+										<button type="submit" class="glyphicon glyphicon-remove btn btn-danger pull-right">
+										</button>
+									</form>
 								</div>
 							</div>
 						</div>

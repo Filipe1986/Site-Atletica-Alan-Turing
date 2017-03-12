@@ -36,9 +36,11 @@ public class ProdutoController {
 		return "Adm/editorProduto";
 	}
 	
-	@GetMapping("/removerproduto/{id}")
-	public String removerProduto(@PathVariable(name = "id") Long idProduto) {
-		produtoRepository.delete(idProduto);
+	@PostMapping("/removerproduto")
+	public String removerProduto(Produto produto) {
+		
+		
+		produtoRepository.delete(produto.getId());
 		return "redirect:/editarProdutos";
 	}
 	
@@ -54,13 +56,17 @@ public class ProdutoController {
 	public String adicionarProduto(@RequestParam("file") MultipartFile file, Produto produto, Model model) {
 		
 		System.out.println(file.getOriginalFilename());
-		produto.setPathImage("img//" + file.getOriginalFilename());
-    	File arg0 = new File("img//" + file.getOriginalFilename());
+		String path  = "img//"+ produto.getNome()+file.getOriginalFilename();
+		
+		produto.setPathImage(path);
+		System.out.println(file.getContentType().toString());
+		
+    	File arquivo = new File(path);
 
     	try {
-			arg0.createNewFile();
+			arquivo.createNewFile();
 			FileOutputStream fos = null;
-			fos = new FileOutputStream(arg0);
+			fos = new FileOutputStream(arquivo);
 			fos.write(file.getBytes());
 			fos.close();
 			
@@ -69,15 +75,6 @@ public class ProdutoController {
 		} 
 		produtoRepository.saveAndFlush(produto);
 		
-		
-/*		produto = new Produto();
-		
-		List<Produto> produtos = produtoRepository.findAll();
-		model.addAttribute("produto", produto);
-		model.addAttribute("produtos", produtos);
-		model.addAttribute("categorias", Categoria.values());*/
-		
-
 		return "redirect:/editarProdutos";
 	}
 	
