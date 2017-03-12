@@ -1,5 +1,8 @@
 package br.com.atleticaAlanTuring.controller;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +14,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import br.com.atleticaAlanTuring.model.Categoria;
 import br.com.atleticaAlanTuring.model.Produto;
@@ -22,15 +27,9 @@ public class ProdutoController {
 	@Autowired
 	private ProdutoRepository produtoRepository;
 	
-	
-	@PostMapping("/cadastrarprodutos")
-	public String cadastrarProduto(Produto produto, Model model) {
-		produtoRepository.save(produto);
-		return "redirect:/editarProdutos";
-	}
-	
 	@GetMapping("/editarProdutos")
 	public String listarProdutos(Produto produto, Model model) {
+		
 		List<Produto> produtos = produtoRepository.findAll();
 		model.addAttribute("produtos", produtos);
 		model.addAttribute("categorias", Categoria.values());
@@ -52,9 +51,34 @@ public class ProdutoController {
 	}
 	
 	@PostMapping("/adicionarNovoProduto")
-	public String adicionarProduto(Produto produto) {
+	public String adicionarProduto(@RequestParam("file") MultipartFile file, Produto produto, Model model) {
+		
+		System.out.println(file.getOriginalFilename());
+		produto.setPathImage("img//" + file.getOriginalFilename());
+    	File arg0 = new File("img//" + file.getOriginalFilename());
+
+    	try {
+			arg0.createNewFile();
+			FileOutputStream fos = null;
+			fos = new FileOutputStream(arg0);
+			fos.write(file.getBytes());
+			fos.close();
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		} 
 		produtoRepository.saveAndFlush(produto);
-		return "redirect:/produtoAdm";
+		
+		
+/*		produto = new Produto();
+		
+		List<Produto> produtos = produtoRepository.findAll();
+		model.addAttribute("produto", produto);
+		model.addAttribute("produtos", produtos);
+		model.addAttribute("categorias", Categoria.values());*/
+		
+
+		return "redirect:/editarProdutos";
 	}
 	
 	@GetMapping("/produtos/{categoria}/{id}")

@@ -3,11 +3,13 @@
 <head>
 
 <title>Atlética Alan Turing - Produtos</title>
-<link rel="shortcut icon" href="favicon.ico"/>
+<link rel="shortcut icon" href="favicon.ico" />
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width"/>
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" />
-<link href="stylesheet.css"	rel="stylesheet" />
+<meta name="viewport" content="width=device-width" />
+<link
+	href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"
+	rel="stylesheet" />
+<link href="stylesheet.css" rel="stylesheet" />
 
 
 </head>
@@ -17,43 +19,45 @@
 
 	<main>
 
-		<div class="container text-center">
+	<div class="container text-center">
 
-			<h1 th:if="${produtos.size()} >= 1">Só produto Pika!</h1>
+		<h1 th:if="${produtos.size()} >= 1">Só produto Pika!</h1>
 
-			<div class="flexbox">
+		<div class="flexbox">
 
-				<p th:if="${produtos.size()} == 0">Não há produtos no momento</p>
+			<p th:if="${produtos.size()} == 0">Não há produtos no momento</p>
 
-				<div th:each="produto : ${produtos}" class="mostrarProduto">	
-				
-					<div class="row">					
-					
-						<h3 class="col-sm-12 col-md-12 col-lg-12"  th:text="${produto.nome}">Nome</h3>
-						
-					</div>
-					
-					<div class="row">
-					
-						<a class="col-sm-12 col-md-12 col-lg-12" th:href="@{'/produtos/' + ${produto.categoria} + '/' + ${produto.id}}">									
-							<img src="produto.jpg" alt="Produto"/>
-						</a>	
-					
-					</div>					
-										
-						<span class="badge text-center" th:text="${produto.categoria}">Categoria</span> 
-				
-					<div class="row">
-					
-						<h2 class="text-center col-sm-12 col-md-12 col-lg-12" th:text="'R$' + ${produto.preco}"></h2>
-				
-					</div>
-					
-				</div>		 	
-	
-		 	</div>
-									
+			<div th:each="produto : ${produtos}" class="mostrarProduto">
+
+				<div class="row">
+
+					<h3 class="col-sm-12 col-md-12 col-lg-12" th:text="${produto.nome}">Nome</h3>
+
+				</div>
+
+				<div class="row">
+
+					<a class="col-sm-12 col-md-12 col-lg-12"
+						th:href="@{'/produtos/' + ${produto.categoria} + '/' + ${produto.id}}">
+						<img src="produto.jpg" alt="Produto" />
+					</a>
+
+				</div>
+
+				<span class="badge text-center" th:text="${produto.categoria}">Categoria</span>
+
+				<div class="row">
+
+					<h2 class="text-center col-sm-12 col-md-12 col-lg-12"
+						th:text="'R$' + ${produto.preco}"></h2>
+
+				</div>
+
+			</div>
+
 		</div>
+
+	</div>
 
 	</main>
 

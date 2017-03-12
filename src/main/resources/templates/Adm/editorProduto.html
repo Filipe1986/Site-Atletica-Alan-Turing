@@ -23,18 +23,15 @@
 			<h1 class="text-center tituloPagina">Editar Produtos</h1>
 
 			<div class="col-xs-12 col-sm-6 col-lg-6">
-
-				<form class="form" th:action="@{/cadastrarprodutos}"
-					th:object="${produto}" method="post">
+				<form class="form" th:action="@{/adicionarNovoProduto}"
+					enctype="multipart/form-data" th:object="${produto}" method="post">
 
 					<fieldset>
-
 						<h2>Novo Produto</h2>
 						<div class="form-group" style="display: none;">
 							<label class="control-label">ID: </label> <input
 								class="form-control" type="text" th:field="*{id}" />
 						</div>
-
 						<div class="form-group">
 							<label for="categoriaProduto" class="control-label">Categoria:
 							</label> <select class="form-control" id="categoriaProduto" type="text"
@@ -43,13 +40,11 @@
 									th:text="${categoria}" th:value="${categoria}">Opções</option>
 							</select>
 						</div>
-
 						<div class="form-group">
 							<label for="nomeProduto" class="control-label">Nome: </label> <input
 								class="form-control" id="nomeProduto" type="text"
 								placeholder="Insira o Nome" th:field="*{nome}" />
 						</div>
-
 						<div class="form-group">
 							<label for="quantidadeProduto" class="control-label">Quantidade
 								em Estoque: </label> <input class="form-control" id="quantidadeProduto"
@@ -57,10 +52,9 @@
 								placeholder="Insira a quantidade"
 								th:field="*{quantidadeEstoque}" />
 						</div>
-
 						<div class="form-group">
 							<label for="precoProduto" class="control-label">Preço: </label> <input
-								class="form-control" type="text" id="precoProduto"
+								class="form-control" type="number" id="precoProduto"
 								placeholder="Insira o valor com casas decimais. Ex: 55.00"
 								th:field="*{preco}" />
 						</div>
@@ -69,6 +63,12 @@
 							<label for="descricaoProduto">Descrição:</label>
 							<textarea th:field="*{descricao}" class="form-control" rows="8"
 								id="descricaoProduto" placeholder="Insira uma Descrição"></textarea>
+						</div>
+
+						<div class="form-group">
+							<label for="descricaoProduto">Imagem:</label> <input type="file"
+								name="file" />
+
 						</div>
 
 						<div class="pull-right">
@@ -83,6 +83,13 @@
 					</fieldset>
 
 				</form>
+
+
+				<!-- <form action="uploadSuccess.html" th:action="@{/fileUpload}"
+		method="post" enctype="multipart/form-data">
+		<input type="file" name="myFile" /> 
+		<input type="submit" />
+	</form> -->
 
 			</div>
 

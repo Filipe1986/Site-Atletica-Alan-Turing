@@ -23,6 +23,8 @@ public class Produto {
 	@NotNull
 	@NotEmpty
 	private String nome;
+	
+	private String pathImage;
 
 	private String descricao;
 	
@@ -82,6 +84,14 @@ public class Produto {
 
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
+	}
+
+	public String getPathImage() {
+		return pathImage;
+	}
+
+	public void setPathImage(String pathImage) {
+		this.pathImage = pathImage;
 	}
 	
 
