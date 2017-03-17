@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -55,8 +56,17 @@ public class ProdutoController {
 	@PostMapping("/adicionarNovoProduto")
 	public String adicionarProduto(@RequestParam("file") MultipartFile file, Produto produto, Model model) {
 		
+		File convFile = new File("/" + file.getOriginalFilename());
+	    try {
+			file.transferTo(convFile);
+		} catch (IllegalStateException | IOException e) {
+			
+			e.printStackTrace();
+		}
+	   
+		
 		System.out.println(file.getOriginalFilename());
-		String path  = "img//"+ produto.getNome()+file.getOriginalFilename();
+/*		String path  = "/src/main/resources/img//"+ produto.getNome()+file.getOriginalFilename();
 		
 		produto.setPathImage(path);
 		System.out.println(file.getContentType().toString());
@@ -72,11 +82,12 @@ public class ProdutoController {
 			
 		} catch (IOException e) {
 			e.printStackTrace();
-		} 
+		} */
 		produtoRepository.saveAndFlush(produto);
 		
 		return "redirect:/editarProdutos";
 	}
+	
 	
 	@GetMapping("/produtos/{categoria}/{id}")
 	public String mostrarProduto(Model model, Produto produtos, @PathVariable(name="id") Long idProduto, @PathVariable(name="categoria") String categoriaProduto){

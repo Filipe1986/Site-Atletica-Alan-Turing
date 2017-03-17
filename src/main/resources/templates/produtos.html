@@ -39,7 +39,8 @@
 
 					<a class="col-sm-12 col-md-12 col-lg-12"
 						th:href="@{'/produtos/' + ${produto.categoria} + '/' + ${produto.id}}">
-						<img src="produto.jpg" alt="Produto" />
+						<img th:src="${produto.pathImage}" alt="Produto" />
+				
 					</a>
 
 				</div>

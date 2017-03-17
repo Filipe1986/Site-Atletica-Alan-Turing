@@ -1,6 +1,8 @@
 package br.com.atleticaAlanTuring.controller;
 
 
+import java.io.File;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -9,6 +11,7 @@ public class VisitanteController {
 
 	@GetMapping("/")
 	public String index() {
+
 		return "index";
 	}
 
