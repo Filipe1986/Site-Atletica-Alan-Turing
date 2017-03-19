@@ -1,11 +1,12 @@
 package br.com.atleticaAlanTuring.controller;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
 
-
+import org.hibernate.engine.transaction.jta.platform.internal.SynchronizationRegistryBasedSynchronizationStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import br.com.atleticaAlanTuring.infra.Arquivador;
 import br.com.atleticaAlanTuring.model.Categoria;
 import br.com.atleticaAlanTuring.model.Produto;
 import br.com.atleticaAlanTuring.repository.ProdutoRepository;
@@ -27,6 +29,9 @@ public class ProdutoController {
 	
 	@Autowired
 	private ProdutoRepository produtoRepository;
+	
+	@Autowired
+	private Arquivador arquivador;
 	
 	@GetMapping("/editarProdutos")
 	public String listarProdutos(Produto produto, Model model) {
@@ -56,35 +61,37 @@ public class ProdutoController {
 	@PostMapping("/adicionarNovoProduto")
 	public String adicionarProduto(@RequestParam("file") MultipartFile file, Produto produto, Model model) {
 		
-		File convFile = new File("/" + file.getOriginalFilename());
-	    try {
-			file.transferTo(convFile);
-		} catch (IllegalStateException | IOException e) {
-			
-			e.printStackTrace();
-		}
-	   
 		
-		System.out.println(file.getOriginalFilename());
-/*		String path  = "/src/main/resources/img//"+ produto.getNome()+file.getOriginalFilename();
 		
-		produto.setPathImage(path);
-		System.out.println(file.getContentType().toString());
-		
-    	File arquivo = new File(path);
-
+		String path = "/imagens//"  +produto.getNome() + file.getOriginalFilename();
+    	File arquivo = new File("src/main/resources/static" + path);
+    	
+    
+    	
     	try {
 			arquivo.createNewFile();
-			FileOutputStream fos = null;
-			fos = new FileOutputStream(arquivo);
+			FileOutputStream fos = new FileOutputStream(arquivo);
 			fos.write(file.getBytes());
+			fos.flush();
 			fos.close();
-			
+
 		} catch (IOException e) {
 			e.printStackTrace();
-		} */
+		} 
+    	
+    	
+		produto.setPathImage(path);
 		produtoRepository.saveAndFlush(produto);
 		
+
+		
+		
+		List<Produto> produtos = produtoRepository.findAll();
+		model.addAttribute("produto", produto);
+		model.addAttribute("produtos", produtos);
+		model.addAttribute("categorias", Categoria.values());
+		
+
 		return "redirect:/editarProdutos";
 	}
 	
