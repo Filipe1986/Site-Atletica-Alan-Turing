@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import br.com.atleticaAlanTuring.infra.Arquivador;
 import br.com.atleticaAlanTuring.model.Categoria;
 import br.com.atleticaAlanTuring.model.Produto;
 import br.com.atleticaAlanTuring.repository.ProdutoRepository;
@@ -30,8 +29,6 @@ public class ProdutoController {
 	@Autowired
 	private ProdutoRepository produtoRepository;
 	
-	@Autowired
-	private Arquivador arquivador;
 	
 	@GetMapping("/editarProdutos")
 	public String listarProdutos(Produto produto, Model model) {
