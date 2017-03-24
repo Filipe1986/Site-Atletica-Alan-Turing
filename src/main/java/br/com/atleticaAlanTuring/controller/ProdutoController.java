@@ -43,6 +43,7 @@ public class ProdutoController {
 	public String removerProduto(Produto produto) {
 		
 		
+		
 		produtoRepository.delete(produto.getId());
 		return "redirect:/editarProdutos";
 	}
@@ -57,13 +58,24 @@ public class ProdutoController {
 	
 	@PostMapping("/adicionarNovoProduto")
 	public String adicionarProduto(@RequestParam("file") MultipartFile file, Produto produto, Model model) {
+				
+		String path = persistindoImagem(file, produto); 
+    	
+		produto.setPathImage(path);
+		produtoRepository.saveAndFlush(produto);
+
+		List<Produto> produtos = produtoRepository.findAll();
+		model.addAttribute("produtos", produtos);
+		model.addAttribute("categorias", Categoria.values());
 		
-		
-		
+
+		return "redirect:/editarProdutos";
+	}
+
+	private String persistindoImagem(MultipartFile file, Produto produto) {
 		String path = "/imagens//"  +produto.getNome() + file.getOriginalFilename();
     	File arquivo = new File("src/main/resources/static" + path);
-    	
-    
+
     	
     	try {
 			arquivo.createNewFile();
@@ -74,22 +86,8 @@ public class ProdutoController {
 
 		} catch (IOException e) {
 			e.printStackTrace();
-		} 
-    	
-    	
-		produto.setPathImage(path);
-		produtoRepository.saveAndFlush(produto);
-		
-
-		
-		
-		List<Produto> produtos = produtoRepository.findAll();
-		model.addAttribute("produto", produto);
-		model.addAttribute("produtos", produtos);
-		model.addAttribute("categorias", Categoria.values());
-		
-
-		return "redirect:/editarProdutos";
+		}
+		return path;
 	}
 	
 	
