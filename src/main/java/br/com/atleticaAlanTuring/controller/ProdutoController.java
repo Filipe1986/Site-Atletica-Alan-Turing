@@ -1,9 +1,9 @@
 package br.com.atleticaAlanTuring.controller;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+
 import java.util.List;
 
 import org.hibernate.engine.transaction.jta.platform.internal.SynchronizationRegistryBasedSynchronizationStrategy;
@@ -29,7 +29,6 @@ public class ProdutoController {
 	@Autowired
 	private ProdutoRepository produtoRepository;
 	
-	
 	@GetMapping("/editarProdutos")
 	public String listarProdutos(Produto produto, Model model) {
 		
@@ -41,9 +40,6 @@ public class ProdutoController {
 	
 	@PostMapping("/removerproduto")
 	public String removerProduto(Produto produto) {
-		
-		
-		
 		produtoRepository.delete(produto.getId());
 		return "redirect:/editarProdutos";
 	}
@@ -60,7 +56,6 @@ public class ProdutoController {
 	public String adicionarProduto(@RequestParam("file") MultipartFile file, Produto produto, Model model) {
 				
 		String path = persistindoImagem(file, produto); 
-    	
 		produto.setPathImage(path);
 		produtoRepository.saveAndFlush(produto);
 
