@@ -1,7 +1,11 @@
 package br.com.atleticaAlanTuring.model;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CollectionTable;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -10,6 +14,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
+
+import javax.persistence.JoinColumn;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -24,7 +30,12 @@ public class Produto {
 	@NotEmpty
 	private String nome;
 	
-	private String pathImage;
+
+	@ElementCollection
+	@CollectionTable(name="pathImageProduto", joinColumns=@JoinColumn(name="id"))
+	private List<String> pathImages;
+	
+	
 
 	private String descricao;
 	
@@ -86,12 +97,22 @@ public class Produto {
 		this.categoria = categoria;
 	}
 
+	
 	public String getPathImage() {
-		return pathImage;
+		return pathImages.get(0);
+	}
+	
+	public List<String> getPathImages(){
+		return pathImages;
 	}
 
-	public void setPathImage(String pathImage) {
-		this.pathImage = pathImage;
+	public void setPathImage(String pathImage) {	
+		if (pathImages == null ){
+			pathImages = new ArrayList<String>();	
+		}
+		
+		this.pathImages.add(pathImage);
+
 	}
 	
 

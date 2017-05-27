@@ -28,7 +28,6 @@
 			<p th:if="${produtos.size()} == 0">Não há produtos no momento</p>
 
 			<div th:each="produto : ${produtos}" class="mostrarProduto">
-
 				<div class="row">
 
 					<h3 class="col-sm-12 col-md-12 col-lg-12" th:text="${produto.nome}">Nome</h3>

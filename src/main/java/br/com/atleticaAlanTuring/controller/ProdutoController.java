@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.tags.EditorAwareTag;
 
 import br.com.atleticaAlanTuring.model.Categoria;
 import br.com.atleticaAlanTuring.model.Produto;
@@ -37,6 +38,20 @@ public class ProdutoController {
 		model.addAttribute("categorias", Categoria.values());
 		return "Adm/editorProduto";
 	}
+	
+	@PostMapping("/adicionarFoto")
+	public String adicionarProduto(@RequestParam("file") MultipartFile file, Produto produto){
+		
+		Produto produtoComNovaFota = produtoRepository.getOne(produto.getId());
+		String path = persistindoImagem(file,produtoComNovaFota); 
+		produtoComNovaFota.setPathImage(path);
+		
+		produtoRepository.saveAndFlush(produtoComNovaFota);
+		
+		
+		return "redirect:/editarProdutos";
+	}
+	
 	
 	@PostMapping("/removerproduto")
 	public String removerProduto(Produto produto) {
@@ -71,7 +86,6 @@ public class ProdutoController {
 		String path = "/imagens//"  +produto.getNome() + file.getOriginalFilename();
     	File arquivo = new File("src/main/resources/static" + path);
 
-    	
     	try {
 			arquivo.createNewFile();
 			FileOutputStream fos = new FileOutputStream(arquivo);
@@ -91,6 +105,7 @@ public class ProdutoController {
 		
 		produtos = produtoRepository.findOne(idProduto);
 		model.addAttribute("produto", produtos);
+		model.addAttribute("imagens", produtos.getPathImages());
 
 		return "paginaProduto";
 	}
