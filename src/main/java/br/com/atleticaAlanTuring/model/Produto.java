@@ -114,6 +114,11 @@ public class Produto {
 		this.pathImages.add(pathImage);
 
 	}
+
+	public boolean isValido() {
+		
+		return (nome.isEmpty() || descricao.isEmpty() || quantidadeEstoque == null || preco == null);
+	}
 	
 
 }

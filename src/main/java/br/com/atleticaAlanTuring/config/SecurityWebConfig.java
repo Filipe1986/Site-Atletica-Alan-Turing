@@ -31,5 +31,7 @@ public class SecurityWebConfig extends WebSecurityConfigurerAdapter {
 			e.printStackTrace();
 		}
 	}
+	
+	
 
 }

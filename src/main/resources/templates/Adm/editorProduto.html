@@ -21,6 +21,34 @@
 
 		<div class="row">
 			<h1 class="text-center tituloPagina">Editar Produtos</h1>
+			<div th:text="${ERRO}">
+				<span class="alert alert-danger alert-dismissable" th:text="${ERRO}"></span>
+
+			</div>
+			<div th:text="${SUCESSO}">
+				<div class="alert alert-success alert-dismissable"
+					th:text="${SUCESSO}"></div>
+			</div>
+
+			<div th:text="${REMOVER}">
+				<div class="alert alert-danger alert-dismissable"
+					th:text="${REMOVER}"></div>
+			</div>
+
+			<div th:text="${ADICIONAR}">
+				<div class="alert alert-info alert-dismissable"
+					th:text="${ADICIONAR}"></div>
+			</div>
+			
+			<div th:text="${ERRO_ADICIONAR}">
+				<div class="alert alert-warming alert-dismissable"
+					th:text="${ERRO_ADICIONAR}"></div>
+			</div>
+		
+
+
+
+
 
 			<div class="col-xs-12 col-sm-6 col-lg-6">
 				<form class="form" th:action="@{/adicionarNovoProduto}"
@@ -148,6 +176,5 @@
 
 	</div>
 	<footer th:replace="adminlayout :: rodape">Rodapé</footer>
-
 </body>
 </html>
