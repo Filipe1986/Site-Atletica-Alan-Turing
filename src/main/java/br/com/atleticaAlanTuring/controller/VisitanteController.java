@@ -1,7 +1,9 @@
 package br.com.atleticaAlanTuring.controller;
 
+import java.text.DateFormat;
+import java.util.Date;
 
-import java.io.File;
+
 
 import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.SimpleEmail;
@@ -40,31 +42,46 @@ public class VisitanteController {
 	}
 
 	@GetMapping("/sejasocio")
-	public String sejaSocio( Model model) {
+	public String sejaSocio(Model model) {
 		model.addAttribute("email", new Email());
 		return "sejaSocio";
 	}
-	
+
+	/**
+	 * Para que o envio de email seja feito é preciso configurar o gmail para
+	 * que se permita app menos seguros.
+	 * 
+	 * https://myaccount.google.com/u/1/lesssecureapps?pageId=none&pli=1
+	 * 
+	 * @return
+	 */
 	@PostMapping("/enviarEmail")
 	public String enviarEmail(Email email, Model model, RedirectAttributes atributo) {
-		
+
 		System.out.println("Email" + email.toString());
 		SimpleEmail simpleEmail = new SimpleEmail();
-		
+
 		try {
-			
-			//Remetente
-			simpleEmail.setFrom(email.getRemetente(), email.getNome());
-			simpleEmail.setAuthentication(email.getRemetente(), "suaSenha");
+
+			// Remetente
+			simpleEmail.setFrom(email.getRemetente(), "JUNTE-SE A NÓS!!");
+
+			simpleEmail.setAuthentication("emailRemetente@uniriotec.br", "senhaRemetente");
 			simpleEmail.setHostName("smtp.gmail.com");
-	        simpleEmail.setSmtpPort(465);  
-			//Destinatário
-			simpleEmail.addTo("Email@destinatario.com");
-			
-			simpleEmail.setSubject("Junte-se a nós");
-			simpleEmail.setMsg("Mensagem padrão de envio de interessado em se associar a atlética"
-					+ "\nInteressado: " + email.getNome() + " " + email.getSobrenome()+
-						"\nMatrícula: "+ email.getMatricula() + " Período: "+ email.getPeriodo());
+			simpleEmail.setSmtpPort(465);
+			// Destinatário
+			simpleEmail.addTo("filipe.goncalves@uniriotec.br");
+
+			Date data = new Date();
+			DateFormat f = DateFormat.getDateInstance(DateFormat.FULL); // Data
+																		// COmpleta
+			System.out.println();
+
+			simpleEmail.setSubject("JUNTE-SE A NÓS!!\n");
+			simpleEmail.setMsg("Mensagem padrão de envio de interessado em se associar a atlética" + "\nInteressado: "
+					+ email.getNome() + " " + email.getSobrenome() + "\nMatrícula: " + email.getMatricula()
+					+ "\nPeríodo: " + email.getPeriodo() + "\nEmail do interessado: " + email.getRemetente()
+					+ "\n Data: " + f.format(data));
 			simpleEmail.setSSL(true);
 			simpleEmail.send();
 			atributo.addFlashAttribute("sucesso", "Email enviado!");
@@ -72,12 +89,12 @@ public class VisitanteController {
 		} catch (EmailException e) {
 			atributo.addFlashAttribute("erro", "Email não enviado!");
 			e.printStackTrace();
+			return "redirect:sejasocio";
 		}
 
 		return "redirect:sejasocio";
 	}
 
-	
 
 
 }

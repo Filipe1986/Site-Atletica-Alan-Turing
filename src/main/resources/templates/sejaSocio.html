@@ -16,6 +16,18 @@
 
 	<header th:replace="layout :: menu">Menu</header>
 
+	<div class="row">
+		<h1 class="text-center tituloPagina">Editar Produtos</h1>
+		<div th:text="${erro}">
+			<span class="alert alert-danger alert-dismissable" th:text="${ERRO}"></span>
+
+		</div>
+		<div th:text="${sucesso}">
+			<div class="alert alert-success alert-dismissable"
+				th:text="${SUCESSO}"></div>
+		</div>
+	</div>
+
 	<main>
 
 	<div class="container text-center">
@@ -69,7 +81,8 @@
 
 
 						<!-- 		Email para se associar -->
-						<form class="form-horizontal" th:action="@{/enviarEmail}" th:object="${email}" method="POST">
+						<form class="form-horizontal" th:action="@{/enviarEmail}"
+							th:object="${email}" method="POST">
 
 							<div class="form-group">
 								<label class="col-xs-3 control-label">Nome</label>
@@ -91,7 +104,7 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label  class="col-xs-3 control-label">Período</label>
+								<label class="col-xs-3 control-label">Período</label>
 								<div class="col-xs-9">
 
 									<input type="text" class="form-control" th:field="*{periodo}" />
